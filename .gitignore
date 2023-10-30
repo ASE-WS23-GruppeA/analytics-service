@@ -3,6 +3,10 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+build.gradle.kts
+gradlew
+gradlew.bat
+settings.gradle.kts
 
 # STS
 .apt_generated
