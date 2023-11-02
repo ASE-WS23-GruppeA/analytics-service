@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import java.time.LocalDate;
+import lombok.Data;
 
 @Entity
+@Data // automatically generates get and set methods for this class
 public class UserProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,5 @@ public class UserProgress {
     private int reps;
     private double weight;
 
-    //setters and getters will be added soon
 
 }
