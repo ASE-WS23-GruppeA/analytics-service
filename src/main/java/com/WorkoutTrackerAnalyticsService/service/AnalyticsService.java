@@ -1,8 +1,8 @@
 package com.WorkoutTrackerAnalyticsService.service;
+import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.WorkoutTrackerAnalyticsService.repository.*;
-import com.WorkoutTrackerAnalyticsService.model.UserProgress;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class AnalyticsService {
     @Autowired
     private UserProgressRepository userProgressRepository;
 
-    public List<UserProgress> getUserProgress(Long userId) {
+    public List<WorkoutProgress> getUserProgress(Long userId) {
         return userProgressRepository.findByUserId(userId);
     }
 }

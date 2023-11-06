@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data // automatically generates get and set methods for this class
-public class UserProgress {
+public class WorkoutProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

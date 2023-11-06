@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.WorkoutTrackerAnalyticsService.model.UserProgress;
-
+import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import java.util.List;
 
 @RestController
@@ -17,7 +16,7 @@ public class AnalyticsController {
     private AnalyticsService analyticsService;
 
     @GetMapping("/user/{userId}")
-    public List<UserProgress> getUserProgress(@PathVariable Long userId) {
+    public List<WorkoutProgress> getUserProgress(@PathVariable Long userId) {
         return analyticsService.getUserProgress(userId);
     }
 
@@ -27,5 +26,6 @@ public class AnalyticsController {
         // return the result as ResponseEntity.
         return null;
     }
+
 
 }
