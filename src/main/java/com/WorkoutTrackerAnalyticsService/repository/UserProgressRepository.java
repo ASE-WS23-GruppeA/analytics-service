@@ -9,16 +9,21 @@ import java.util.List;
 
 
 public interface UserProgressRepository extends JpaRepository<WorkoutProgress, Long> {
-    List<WorkoutProgress> findByUserId(Long userId);
 
-    List<WorkoutProgress> findByExerciseName(String exerciseName);
+    List<WorkoutProgress> findByWorkoutID(Long workoutID);
 
-    List<WorkoutProgress> findByUserIdAndStartTimeAfter(String userId, LocalDateTime startTime);
+    List<WorkoutProgress> findByMuscleGroup(String muscleGroup);
 
-    List<WorkoutProgress> findByUserIdAndEndTimeBefore(String userId, LocalDateTime endTime);
+    List<WorkoutProgress> findByExerciseID(Long exerciseID);
 
-    @Query("SELECT w FROM WorkoutProgress w WHERE w.userId = :userId AND w.startTime >= :startDate")
-    List<WorkoutProgress> findWorkoutSessionsAfterDate(@Param("userId") String userId, @Param("startDate") LocalDateTime startDate);
+    List<WorkoutProgress> findByUserID(String userID);
 
 
+    List<WorkoutProgress> findByWorkoutSetsID(Long workoutSetsID);
+
+
+    List<WorkoutProgress> findByMuscleGroupAndExerciseName(String muscleGroup, String exerciseName);
+
+
+    List<WorkoutProgress> findByExerciseNameAndUserID(String exerciseName, String userID);
 }
