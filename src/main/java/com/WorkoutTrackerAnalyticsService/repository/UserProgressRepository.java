@@ -1,13 +1,13 @@
 package com.WorkoutTrackerAnalyticsService.repository;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 
+@Repository
 public interface UserProgressRepository extends JpaRepository<WorkoutProgress, Long> {
 
     List<WorkoutProgress> findByWorkoutID(Long workoutID);
