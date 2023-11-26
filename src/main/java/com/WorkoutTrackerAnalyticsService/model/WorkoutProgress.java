@@ -1,5 +1,9 @@
 package com.WorkoutTrackerAnalyticsService.model;
+import java.io.IOException;
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +24,8 @@ public class WorkoutProgress {
     private String exerciseName;
     private int reps;
     private double weight;
+
+
 
     // Getters
     public Long getId() {
@@ -112,6 +118,16 @@ public class WorkoutProgress {
         this.weight = weight;
     }
 
+
+    // Static method to create WorkoutProgress from JSON
+    public static WorkoutProgress fromJson(String json) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(json, WorkoutProgress.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error processing JSON for WorkoutProgress", e);
+        }
+    }
 
 }
 
