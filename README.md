@@ -20,7 +20,3 @@ The "Analytics service" provides the following API endpoints
 - `DELETE /delete-progress/{progressId}` : Deletes an existing workout progress entry.
 
 
-
-=======
->>>>>>> origin/dev
-
