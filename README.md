@@ -2,6 +2,7 @@
 
 This documentation provides information about the "Analytics Service" microservice, which analyzes user progress data to provide insights and visualizations.
 
+<<<<<<< HEAD
 ## Table of Contents
 - [API Endpoints](#api-endpoints)
 
@@ -20,4 +21,6 @@ The "Analytics service" provides the following API endpoints
 
 
 
+=======
+>>>>>>> origin/dev
 
