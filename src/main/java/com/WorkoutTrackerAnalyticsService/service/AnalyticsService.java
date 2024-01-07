@@ -45,6 +45,47 @@ public class AnalyticsService {
     }
 
 
+    public void addWorkoutProgress(WorkoutProgress workoutProgress) {
+        userProgressRepository.save(workoutProgress);
+    }
+
+    public void updateWorkoutProgress(Long progressId, WorkoutProgress updatedProgress) {
+        WorkoutProgress existingProgress = userProgressRepository.findById(progressId)
+                .orElseThrow(() -> new RuntimeException("Workout progress not found with id: " + progressId));
+
+        existingProgress.setReps(updatedProgress.getReps());
+        existingProgress.setWeight(updatedProgress.getWeight());
+        existingProgress.setMuscleGroup(updatedProgress.getMuscleGroup());
+        existingProgress.setStartTime(updatedProgress.getStartTime());
+        existingProgress.setEndTime(updatedProgress.getEndTime());
+        userProgressRepository.save(existingProgress);
+    }
+
+    public void deleteWorkoutProgress(Long progressId) {
+        userProgressRepository.deleteById(progressId);
+    }
+
+    public Double getTotalVolume(Long userId) {
+        List<WorkoutProgress> userProgress = userProgressRepository.findByUserID(String.valueOf(userId));
+        return userProgress.stream().mapToDouble(WorkoutProgress::getWeight).sum();
+    }
+
+    public List<WorkoutProgress> getProgressByMuscleGroup(Long userId, String muscleGroup) {
+        return userProgressRepository.findByUserIDAndMuscleGroup(String.valueOf(userId), muscleGroup);
+    }
+
+    public List<WorkoutProgress> getProgressByDate(Long userId, LocalDateTime startDate, LocalDateTime endDate) {
+        return userProgressRepository.findByUserIDAndStartTimeBetween(String.valueOf(userId), startDate, endDate);
+    }
+
+    public List<WorkoutProgress> getExerciseProgress(Long exerciseId) {
+        return userProgressRepository.findByExerciseID(exerciseId);
+    }
+
+    public List<WorkoutProgress> getWorkoutProgress(Long workoutId) {
+        return userProgressRepository.findByWorkoutID(workoutId);
+    }
+
     public Map<String, Object> calculateProgress(Long userId, LocalDateTime lastSessionTime) {
         List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserID(String.valueOf(userId));
 

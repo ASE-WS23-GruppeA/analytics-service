@@ -26,4 +26,8 @@ public interface UserProgressRepository extends JpaRepository<WorkoutProgress, L
 
 
     List<WorkoutProgress> findByExerciseNameAndUserID(String exerciseName, String userID);
+
+    List<WorkoutProgress> findByUserIDAndMuscleGroup(String s, String muscleGroup);
+
+    List<WorkoutProgress> findByUserIDAndStartTimeBetween(String s, LocalDateTime startDate, LocalDateTime endDate);
 }

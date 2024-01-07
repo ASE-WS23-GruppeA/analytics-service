@@ -1,17 +1,17 @@
 package com.WorkoutTrackerAnalyticsService.controller;
 import com.WorkoutTrackerAnalyticsService.service.AnalyticsService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+
 
 @RestController
 @RequestMapping("/analytics")
@@ -22,32 +22,65 @@ public class AnalyticsController {
         this.analyticsService = analyticsService;
     }
 
-    @GetMapping("/user/{userId}")
-    public List<WorkoutProgress> getUserProgress(@PathVariable Long userId) {
-        return analyticsService.getUserProgress(userId);
+    @GetMapping("/user-progress/{userId}")
+    public ResponseEntity<List<WorkoutProgress>> getUserProgress(@PathVariable Long userId) {
+        List<WorkoutProgress> userProgress = analyticsService.getUserProgress(userId);
+        return new ResponseEntity<>(userProgress, HttpStatus.OK);
     }
 
-    @GetMapping("/fetchData")
-    public ResponseEntity<String> fetchDataFromUrl() {
-        String url = ""; // need to add API my url https://example.com/api/data
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-
-        if (response.getStatusCode() == HttpStatus.OK) {
-            String data = response.getBody();
-            return new ResponseEntity<>(data, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Failed to fetch data from the URL", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-
+    @GetMapping("/workout-progress/{workoutId}")
+    public ResponseEntity<List<WorkoutProgress>> getWorkoutProgress(@PathVariable Long workoutId) {
+        List<WorkoutProgress> workoutProgress = analyticsService.getWorkoutProgress(workoutId);
+        return new ResponseEntity<>(workoutProgress, HttpStatus.OK);
     }
 
-    @GetMapping("/calculate-progress/{userId}")
-    public Map<String, Object> calculateProgress(@PathVariable Long userId,@PathVariable String lastSessionTime) {
-
-        LocalDateTime lastSessionTimeParsed = LocalDateTime.parse(lastSessionTime);
-        return  analyticsService.calculateProgress(userId, lastSessionTimeParsed);
+    @GetMapping("/exercise-progress/{exerciseId}")
+    public ResponseEntity<List<WorkoutProgress>> getExerciseProgress(@PathVariable Long exerciseId) {
+        List<WorkoutProgress> exerciseProgress = analyticsService.getExerciseProgress(exerciseId);
+        return new ResponseEntity<>(exerciseProgress, HttpStatus.OK);
     }
+
+    @GetMapping("/progress-by-date/{userId}")
+    public ResponseEntity<List<WorkoutProgress>> getProgressByDate(
+            @PathVariable Long userId,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        List<WorkoutProgress> progressByDate = analyticsService.getProgressByDate(userId, startDate.atStartOfDay(), endDate.atStartOfDay());
+        return new ResponseEntity<>(progressByDate, HttpStatus.OK);
+    }
+
+    @GetMapping("/progress-by-muscle-group/{userId}")
+    public ResponseEntity<List<WorkoutProgress>> getProgressByMuscleGroup(
+            @PathVariable Long userId,
+            @RequestParam String muscleGroup) {
+        List<WorkoutProgress> progressByMuscleGroup = analyticsService.getProgressByMuscleGroup(userId, muscleGroup);
+        return new ResponseEntity<>(progressByMuscleGroup, HttpStatus.OK);
+    }
+
+    @GetMapping("/total-volume/{userId}")
+    public ResponseEntity<Double> getTotalVolume(@PathVariable Long userId) {
+        Double totalVolume = analyticsService.getTotalVolume(userId);
+        return new ResponseEntity<>(totalVolume, HttpStatus.OK);
+    }
+
+    @PostMapping("/add-progress")
+    public ResponseEntity<String> addWorkoutProgress(@RequestBody WorkoutProgress workoutProgress) {
+        analyticsService.addWorkoutProgress(workoutProgress);
+        return new ResponseEntity<>("Workout progress added successfully", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update-progress/{progressId}")
+    public ResponseEntity<String> updateWorkoutProgress(
+            @PathVariable Long progressId,
+            @RequestBody WorkoutProgress updatedProgress) {
+        analyticsService.updateWorkoutProgress(progressId, updatedProgress);
+        return new ResponseEntity<>("Workout progress updated successfully", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-progress/{progressId}")
+    public ResponseEntity<String> deleteWorkoutProgress(@PathVariable Long progressId) {
+        analyticsService.deleteWorkoutProgress(progressId);
+        return new ResponseEntity<>("Workout progress deleted successfully", HttpStatus.OK);
+    }
+
 }

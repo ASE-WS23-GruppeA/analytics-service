@@ -1,7 +1,5 @@
 package com.WorkoutTrackerAnalyticsService.model;
-import java.io.IOException;
 import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.Entity;
