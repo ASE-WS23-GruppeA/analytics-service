@@ -8,7 +8,6 @@ link http://localhost:8081/analytics-service/swagger-ui.html or http://localhost
 ## Table of Contents
 - [API Endpoints](#api-endpoints)
 - [Usage](#usage)
-- [Examples](#examples)
 
 ## Api Endpoints
 The "Analytics service" provides the following API endpoints
