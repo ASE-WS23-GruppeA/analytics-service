@@ -1,4 +1,3 @@
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.builders.ApiInfoBuilder;

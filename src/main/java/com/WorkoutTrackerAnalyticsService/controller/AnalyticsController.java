@@ -5,12 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
-import org.springframework.web.client.RestTemplate;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -82,5 +78,4 @@ public class AnalyticsController {
         analyticsService.deleteWorkoutProgress(progressId);
         return new ResponseEntity<>("Workout progress deleted successfully", HttpStatus.OK);
     }
-
 }
