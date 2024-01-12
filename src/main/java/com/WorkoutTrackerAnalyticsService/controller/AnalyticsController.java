@@ -59,23 +59,4 @@ public class AnalyticsController {
         return new ResponseEntity<>(totalVolume, HttpStatus.OK);
     }
 
-    @PostMapping("/add-progress")
-    public ResponseEntity<String> addWorkoutProgress(@RequestBody WorkoutProgress workoutProgress) {
-        analyticsService.addWorkoutProgress(workoutProgress);
-        return new ResponseEntity<>("Workout progress added successfully", HttpStatus.CREATED);
-    }
-
-    @PutMapping("/update-progress/{progressId}")
-    public ResponseEntity<String> updateWorkoutProgress(
-            @PathVariable Long progressId,
-            @RequestBody WorkoutProgress updatedProgress) {
-        analyticsService.updateWorkoutProgress(progressId, updatedProgress);
-        return new ResponseEntity<>("Workout progress updated successfully", HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete-progress/{progressId}")
-    public ResponseEntity<String> deleteWorkoutProgress(@PathVariable Long progressId) {
-        analyticsService.deleteWorkoutProgress(progressId);
-        return new ResponseEntity<>("Workout progress deleted successfully", HttpStatus.OK);
-    }
 }
