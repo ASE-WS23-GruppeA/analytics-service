@@ -3,7 +3,10 @@ import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.WorkoutTrackerAnalyticsService.repository.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -121,4 +124,73 @@ public class AnalyticsService {
 
         return progressData;
     }
+
+    public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDateTime startDate, LocalDateTime endDate) {
+        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndExerciseNameAndStartTimeBetween(
+                String.valueOf(userId), exerciseName, startDate, endDate);
+
+        Map<String, Double> weightProgressMap = new HashMap<>();
+
+        for (int i = 1; i < userWorkouts.size(); i++) {
+            WorkoutProgress currentWorkout = userWorkouts.get(i);
+            WorkoutProgress previousWorkout = userWorkouts.get(i - 1);
+
+            double weightProgress = calculateWorkoutProgress(currentWorkout, previousWorkout);
+            weightProgressMap.put(currentWorkout.getStartTime().toString(), weightProgress);
+        }
+
+        return weightProgressMap;
+    }
+
+    public Map<String, Object> getUserTrainingInfo(Long userId, LocalDateTime startDate, LocalDateTime endDate) {
+        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndStartTimeBetween(
+                String.valueOf(userId), startDate, endDate);
+
+        Map<LocalDate, List<String>> trainingInfoMap = new HashMap<>();
+
+        for (WorkoutProgress workout : userWorkouts) {
+            LocalDate workoutDate = workout.getStartTime().toLocalDate();
+            String trainingInfo = workout.getExerciseName() + " - Sets: " + workout.getWorkoutSetsID() + ", Reps: " + workout.getReps();
+
+            trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(trainingInfo);
+        }
+
+        //The size of the map represents the number of unique dates (days) within the specified time range, and each date corresponds to a gym visit.
+        int gymVisits = trainingInfoMap.size();
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("gymVisits", gymVisits);
+        result.put("trainingInfo", trainingInfoMap);
+
+        return result;
+    }
+
+    public Map<String, Double> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDateTime startDate, LocalDateTime endDate) {
+        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndMuscleGroupAndStartTimeBetween(
+                String.valueOf(userId), muscleGroup, startDate, endDate);
+
+        Map<String, Double> averageWeightProgressMap = new HashMap<>();
+        Map<String, Integer> exerciseCountMap = new HashMap<>();
+
+        for (WorkoutProgress workout : userWorkouts) {
+            String exerciseName = workout.getExerciseName();
+            double weightProgress = calculateWorkoutProgress(workout, getPreviousWorkout(userWorkouts, workout));
+
+            averageWeightProgressMap.merge(exerciseName, weightProgress, Double::sum);
+            exerciseCountMap.merge(exerciseName, 1, Integer::sum);
+        }
+
+        averageWeightProgressMap.forEach((exerciseName, totalWeightProgress) ->
+                averageWeightProgressMap.put(exerciseName, totalWeightProgress / exerciseCountMap.get(exerciseName)));
+
+        return averageWeightProgressMap;
+    }
+
+    private WorkoutProgress getPreviousWorkout(List<WorkoutProgress> userWorkouts, WorkoutProgress currentWorkout) {
+        int currentIndex = userWorkouts.indexOf(currentWorkout);
+        return (currentIndex > 0) ? userWorkouts.get(currentIndex - 1) : null;
+    }
+
+
+
 }

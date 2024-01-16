@@ -6,7 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -57,6 +60,38 @@ public class AnalyticsController {
     public ResponseEntity<Double> getTotalVolume(@PathVariable Long userId) {
         Double totalVolume = analyticsService.getTotalVolume(userId);
         return new ResponseEntity<>(totalVolume, HttpStatus.OK);
+    }
+
+    @GetMapping("/weight-progress/{userId}/{exerciseName}")
+    public ResponseEntity<Map<LocalDateTime, Double>> getWeightProgress(
+            @PathVariable Long userId,
+            @PathVariable String exerciseName,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+        List<WorkoutProgress> weightProgress = (List<WorkoutProgress>) analyticsService.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
+        Map<LocalDateTime, Double> result = weightProgress.stream()
+                .collect(Collectors.toMap(WorkoutProgress::getStartTime, WorkoutProgress::getWeight));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/user-training-info/{userId}")
+    public ResponseEntity<Map<String, Object>> getUserTrainingInfo(
+            @PathVariable Long userId,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+        Map<String, Object> userTrainingInfo = analyticsService.getUserTrainingInfo(userId, startDate, endDate);
+        return new ResponseEntity<>(userTrainingInfo, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/average-weight-progress/{userId}/{muscleGroup}")
+    public ResponseEntity<Map<String, Double>> getAverageWeightProgress(
+            @PathVariable Long userId,
+            @PathVariable String muscleGroup,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+        Map<String, Double> averageWeightProgress = analyticsService.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
+        return new ResponseEntity<>(averageWeightProgress, HttpStatus.OK);
     }
 
 }

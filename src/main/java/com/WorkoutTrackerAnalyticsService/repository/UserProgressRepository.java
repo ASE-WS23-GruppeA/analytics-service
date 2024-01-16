@@ -1,6 +1,8 @@
 package com.WorkoutTrackerAnalyticsService.repository;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -30,4 +32,23 @@ public interface UserProgressRepository extends JpaRepository<WorkoutProgress, L
     List<WorkoutProgress> findByUserIDAndMuscleGroup(String s, String muscleGroup);
 
     List<WorkoutProgress> findByUserIDAndStartTimeBetween(String s, LocalDateTime startDate, LocalDateTime endDate);
+
+    @Query("SELECT wp FROM WorkoutProgress wp WHERE wp.userID = :userId " +
+            "AND wp.exerciseName = :exerciseName " +
+            "AND wp.startTime BETWEEN :startDate AND :endDate")
+    List<WorkoutProgress> findByUserIDAndExerciseNameAndStartTimeBetween(
+            @Param("userId") String userId,
+            @Param("exerciseName") String exerciseName,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate);
+
+    @Query("SELECT wp FROM WorkoutProgress wp " +
+            "WHERE wp.userID = :userId " +
+            "AND wp.muscleGroup = :muscleGroup " +
+            "AND wp.startTime BETWEEN :startDate AND :endDate")
+    List<WorkoutProgress> findByUserIDAndMuscleGroupAndStartTimeBetween(
+            @Param("userId") String userId,
+            @Param("muscleGroup") String muscleGroup,
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate);
 }
