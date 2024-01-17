@@ -66,8 +66,8 @@ public class AnalyticsController {
     public ResponseEntity<Map<LocalDateTime, Double>> getWeightProgress(
             @PathVariable Long userId,
             @PathVariable String exerciseName,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
         List<WorkoutProgress> weightProgress = (List<WorkoutProgress>) analyticsService.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
         Map<LocalDateTime, Double> result = weightProgress.stream()
                 .collect(Collectors.toMap(WorkoutProgress::getStartTime, WorkoutProgress::getWeight));
