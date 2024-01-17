@@ -88,8 +88,8 @@ public class AnalyticsController {
     public ResponseEntity<Map<String, Double>> getAverageWeightProgress(
             @PathVariable Long userId,
             @PathVariable String muscleGroup,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
         Map<String, Double> averageWeightProgress = analyticsService.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
         return new ResponseEntity<>(averageWeightProgress, HttpStatus.OK);
     }
