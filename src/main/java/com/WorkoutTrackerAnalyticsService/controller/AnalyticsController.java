@@ -77,8 +77,8 @@ public class AnalyticsController {
     @GetMapping("/user-training-info/{userId}")
     public ResponseEntity<Map<String, Object>> getUserTrainingInfo(
             @PathVariable Long userId,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
         Map<String, Object> userTrainingInfo = analyticsService.getUserTrainingInfo(userId, startDate, endDate);
         return new ResponseEntity<>(userTrainingInfo, HttpStatus.OK);
     }
