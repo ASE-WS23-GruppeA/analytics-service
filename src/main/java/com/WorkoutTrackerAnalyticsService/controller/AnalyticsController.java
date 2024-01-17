@@ -44,7 +44,7 @@ public class AnalyticsController {
             @PathVariable Long userId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        List<WorkoutProgress> progressByDate = analyticsService.getProgressByDate(userId, startDate.atStartOfDay(), endDate.atStartOfDay());
+        List<WorkoutProgress> progressByDate = analyticsService.getProgressByDate(userId, startDate, endDate);
         return new ResponseEntity<>(progressByDate, HttpStatus.OK);
     }
 
@@ -63,13 +63,13 @@ public class AnalyticsController {
     }
 
     @GetMapping("/weight-progress/{userId}/{exerciseName}")
-    public ResponseEntity<Map<LocalDateTime, Double>> getWeightProgress(
+    public ResponseEntity<Map<LocalDate, Double>> getWeightProgress(
             @PathVariable Long userId,
             @PathVariable String exerciseName,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
         List<WorkoutProgress> weightProgress = (List<WorkoutProgress>) analyticsService.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
-        Map<LocalDateTime, Double> result = weightProgress.stream()
+        Map<LocalDate, Double> result = weightProgress.stream()
                 .collect(Collectors.toMap(WorkoutProgress::getStartTime, WorkoutProgress::getWeight));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -77,19 +77,18 @@ public class AnalyticsController {
     @GetMapping("/user-training-info/{userId}")
     public ResponseEntity<Map<String, Object>> getUserTrainingInfo(
             @PathVariable Long userId,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
-        Map<String, Object> userTrainingInfo = analyticsService.getUserTrainingInfo(userId, startDate, endDate);
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        Map<String, Object> userTrainingInfo = analyticsService.getUserTrainingInfo(userId, startDate, endDate );
         return new ResponseEntity<>(userTrainingInfo, HttpStatus.OK);
     }
-
 
     @GetMapping("/average-weight-progress/{userId}/{muscleGroup}")
     public ResponseEntity<Map<String, Double>> getAverageWeightProgress(
             @PathVariable Long userId,
             @PathVariable String muscleGroup,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime startDate,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime endDate) {
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
         Map<String, Double> averageWeightProgress = analyticsService.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
         return new ResponseEntity<>(averageWeightProgress, HttpStatus.OK);
     }

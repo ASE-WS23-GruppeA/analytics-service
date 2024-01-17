@@ -1,5 +1,5 @@
 package com.WorkoutTrackerAnalyticsService.model;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.Entity;
@@ -17,8 +17,8 @@ public class WorkoutProgress {
     private Long workoutSetsID;
     private Long workoutID;
     private String muscleGroup;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private String exerciseName;
     private int reps;
     private double weight;
@@ -51,11 +51,11 @@ public class WorkoutProgress {
         return muscleGroup;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalDate getEndTime() {
         return endTime;
     }
 
@@ -96,11 +96,11 @@ public class WorkoutProgress {
         this.muscleGroup = muscleGroup;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(LocalDate endTime) {
         this.endTime = endTime;
     }
 

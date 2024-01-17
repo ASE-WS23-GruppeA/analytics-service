@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -31,7 +31,7 @@ public interface UserProgressRepository extends JpaRepository<WorkoutProgress, L
 
     List<WorkoutProgress> findByUserIDAndMuscleGroup(String s, String muscleGroup);
 
-    List<WorkoutProgress> findByUserIDAndStartTimeBetween(String s, LocalDateTime startDate, LocalDateTime endDate);
+    List<WorkoutProgress> findByUserIDAndStartTimeBetween(String s, LocalDate startDate, LocalDate endDate);
 
     @Query("SELECT wp FROM WorkoutProgress wp WHERE wp.userID = :userId " +
             "AND wp.exerciseName = :exerciseName " +
@@ -39,8 +39,8 @@ public interface UserProgressRepository extends JpaRepository<WorkoutProgress, L
     List<WorkoutProgress> findByUserIDAndExerciseNameAndStartTimeBetween(
             @Param("userId") String userId,
             @Param("exerciseName") String exerciseName,
-            @Param("startDate") LocalDateTime startDate,
-            @Param("endDate") LocalDateTime endDate);
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate);
 
     @Query("SELECT wp FROM WorkoutProgress wp " +
             "WHERE wp.userID = :userId " +
@@ -49,6 +49,8 @@ public interface UserProgressRepository extends JpaRepository<WorkoutProgress, L
     List<WorkoutProgress> findByUserIDAndMuscleGroupAndStartTimeBetween(
             @Param("userId") String userId,
             @Param("muscleGroup") String muscleGroup,
-            @Param("startDate") LocalDateTime startDate,
-            @Param("endDate") LocalDateTime endDate);
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate);
+
+
 }

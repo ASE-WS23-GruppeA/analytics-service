@@ -1,75 +1,73 @@
 package com.WorkoutTrackerAnalyticsServiceTest.service;
 
-
+import com.WorkoutTrackerAnalyticsService.WorkoutTrackerAnalyticsServiceApplication;
+import com.WorkoutTrackerAnalyticsService.controller.AnalyticsController;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
-import com.WorkoutTrackerAnalyticsService.repository.UserProgressRepository;
 import com.WorkoutTrackerAnalyticsService.service.AnalyticsService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import java.time.LocalDate;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.util.AssertionErrors.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
-@ComponentScan(basePackages = "com.WorkoutTrackerAnalyticsService")
-@SpringBootApplication
-class AnalyticsServiceTest {
+
+@SpringBootTest(classes = WorkoutTrackerAnalyticsServiceApplication.class)
+@ExtendWith(SpringExtension.class)
+@AutoConfigureMockMvc
+class AnalyticsControllerTest {
 
     @Autowired
+    private MockMvc mockMvc;
+
+    @InjectMocks
+    private AnalyticsController analyticsController;
+
+    @Mock
     private AnalyticsService analyticsService;
 
-    @MockBean
-    private UserProgressRepository userProgressRepository;
-
     @Test
-    void testGetUserProgress() {
-        // Arrange
-        Long userId = 1L;
-        List<WorkoutProgress> mockWorkoutProgress = Collections.singletonList(new WorkoutProgress());
-        when(userProgressRepository.findByUserID(String.valueOf(userId))).thenReturn(mockWorkoutProgress);
+    void testGetUserTrainingInfo() throws Exception {
+        // Mocking the service response
+        List<WorkoutProgress> mockWorkouts = new ArrayList<>();
+        // Add some mock workout data
+        mockWorkouts.add(new WorkoutProgress(/* Set your mock data here */));
+        when(analyticsService.getUserTrainingInfo(any(Long.class), any(LocalDate.class), any(LocalDate.class)))
+                .thenReturn(createMockUserTrainingInfo());
 
-        // Act
-        List<WorkoutProgress> result = analyticsService.getUserProgress(userId);
+        // Perform the GET request and verify the response
+        mockMvc.perform(get("/analytics/user-training-info/123")
+                        .param("startDate", "2023-01-01")
+                        .param("endDate", "2023-12-31"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.gymVisits").value(1)) // Adjust based on your mock data
+                .andExpect(jsonPath("$.trainingInfo").isMap()) // Adjust based on your mock data
+                .andExpect(jsonPath("$.trainingInfo['2023-01-01']").isArray()); // Adjust based on your mock data
 
-        // Assert
-        assertEquals(mockWorkoutProgress, result);
     }
 
-    @Test
-    void testCalculateProgress() {
-        // Arrange
-        Long userId = 1L;
-        LocalDateTime lastSessionTime = LocalDateTime.now().minusDays(7); // assume last session was a week ago
-        List<WorkoutProgress> mockUserWorkouts = Arrays.asList(
-                createWorkoutProgress(userId, LocalDateTime.now().minusDays(8)),  // session more than a week ago
-                createWorkoutProgress(userId, LocalDateTime.now().minusDays(1))   // session yesterday
+    private Map<String, Object> createMockUserTrainingInfo() {
+        // Create and return mock user training info data
+        // Adjust the data based on your expectations
+        return Map.of(
+                "gymVisits", 1,
+                "trainingInfo", Map.of("2023-01-01", List.of("Mock Exercise - Sets: 3, Reps: 10"))
         );
-        when(userProgressRepository.findByUserID(String.valueOf(userId))).thenReturn(mockUserWorkouts);
-
-        // Act
-        List<WorkoutProgress> result = (List<WorkoutProgress>) analyticsService.calculateProgress(userId, lastSessionTime);
-
-        assertNotNull(result);
-        assertEquals(2, result.size());
-    }
-
-    // Helper method to create a WorkoutProgress instance
-    private WorkoutProgress createWorkoutProgress(Long userId, LocalDateTime startTime) {
-        WorkoutProgress workoutProgress = new WorkoutProgress();
-        workoutProgress.setUserId(String.valueOf(userId));
-        workoutProgress.setStartTime(startTime);
-
-        return workoutProgress;
     }
 }
