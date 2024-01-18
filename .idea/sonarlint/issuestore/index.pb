@@ -28,3 +28,5 @@ Y
 )src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
 @
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+_
+/out/production/resources/application.properties,8\5\85d7098e916a4818c04e0961d0740d145b133fae
