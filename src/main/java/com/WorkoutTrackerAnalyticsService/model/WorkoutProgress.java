@@ -2,17 +2,11 @@ package com.WorkoutTrackerAnalyticsService.model;
 import java.time.LocalDate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
 public class WorkoutProgress {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-    private String userID;
+    private Long userID;
     private Long exerciseID;
     private Long workoutSetsID;
     private Long workoutID;
@@ -30,7 +24,7 @@ public class WorkoutProgress {
         return id;
     }
 
-    public String getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
@@ -76,7 +70,7 @@ public class WorkoutProgress {
         this.id = id;
     }
 
-    public void setUserId(String userID) {
+    public void setUserId(Long userID) {
         this.userID = userID;
     }
 

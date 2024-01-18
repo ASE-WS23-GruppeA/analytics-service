@@ -12,15 +12,15 @@ import java.util.Map;
 
 @Service
 public class AnalyticsService {
-    private final UserProgressRepository userProgressRepository;
+    private final UserProgressRepositoryImpl userProgressRepositoryImpl;
 
     @Autowired
-    public AnalyticsService(UserProgressRepository userProgressRepository) {
-        this.userProgressRepository = userProgressRepository;
+    public AnalyticsService(UserProgressRepositoryImpl userProgressRepositoryImpl) {
+        this.userProgressRepositoryImpl = userProgressRepositoryImpl;
     }
 
     public List<WorkoutProgress> getUserProgress(Long workoutId) {
-        return userProgressRepository.findByWorkoutID(workoutId);
+        return userProgressRepositoryImpl.findByWorkoutID(workoutId);
     }
 
 
@@ -49,29 +49,29 @@ public class AnalyticsService {
 
 
     public Double getTotalVolume(Long userId) {
-        List<WorkoutProgress> userProgress = userProgressRepository.findByUserID(String.valueOf(userId));
+        List<WorkoutProgress> userProgress = userProgressRepositoryImpl.findByUserID(String.valueOf(userId));
         return userProgress.stream().mapToDouble(WorkoutProgress::getWeight).sum();
     }
 
     public List<WorkoutProgress> getProgressByMuscleGroup(Long userId, String muscleGroup) {
-        return userProgressRepository.findByUserIDAndMuscleGroup(String.valueOf(userId), muscleGroup);
+        return userProgressRepositoryImpl.findByUserIDAndMuscleGroup(String.valueOf(userId), muscleGroup);
     }
 
     public List<WorkoutProgress> getProgressByDate(Long userId, LocalDate startDate, LocalDate endDate) {
-        return userProgressRepository.findByUserIDAndStartTimeBetween(String.valueOf(userId), startDate, endDate);
+        return userProgressRepositoryImpl.findByUserIDAndStartTimeBetween(String.valueOf(userId), startDate, endDate);
     }
 
     public List<WorkoutProgress> getExerciseProgress(Long exerciseId) {
-        return userProgressRepository.findByExerciseID(exerciseId);
+        return userProgressRepositoryImpl.findByExerciseID(exerciseId);
     }
 
     public List<WorkoutProgress> getWorkoutProgress(Long workoutId) {
-        return userProgressRepository.findByWorkoutID(workoutId);
+        return userProgressRepositoryImpl.findByWorkoutID(workoutId);
     }
 
     public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndExerciseNameAndStartTimeBetween(
-                String.valueOf(userId), exerciseName, startDate, endDate);
+        List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndExerciseNameAndStartTimeBetween(
+                userId, exerciseName, startDate, endDate);
 
         Map<String, Double> weightProgressMap = new HashMap<>();
 
@@ -87,7 +87,7 @@ public class AnalyticsService {
     }
 
     public Map<String, Object> getUserTrainingInfo(Long userId, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndStartTimeBetween(
+        List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndStartTimeBetween(
                 String.valueOf(userId), startDate, endDate);
 
         Map<LocalDate, List<String>> trainingInfoMap = new HashMap<>();
@@ -110,8 +110,8 @@ public class AnalyticsService {
     }
 
     public Map<String, Double> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndMuscleGroupAndStartTimeBetween(
-                String.valueOf(userId), muscleGroup, startDate, endDate);
+        List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndMuscleGroupAndStartTimeBetween(
+                userId, muscleGroup, startDate, endDate);
 
         Map<String, Double> averageWeightProgressMap = new HashMap<>();
         Map<String, Integer> exerciseCountMap = new HashMap<>();
