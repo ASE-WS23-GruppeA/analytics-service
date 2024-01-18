@@ -1,5 +1,6 @@
 package com.WorkoutTrackerAnalyticsService.controller;
 import com.WorkoutTrackerAnalyticsService.service.AnalyticsService;
+import com.WorkoutTrackerAnalyticsService.service.AnalyticsServiceImpl;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,27 +16,27 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/analytics")
 public class AnalyticsController {
-    private final AnalyticsService analyticsService;
+    private final AnalyticsServiceImpl analyticsServiceImpl;
 
-    public AnalyticsController(AnalyticsService analyticsService) {
-        this.analyticsService = analyticsService;
+    public AnalyticsController(AnalyticsServiceImpl analyticsServiceImpl) {
+        this.analyticsServiceImpl = analyticsServiceImpl;
     }
 
     @GetMapping("/user-progress/{userId}")
     public ResponseEntity<List<WorkoutProgress>> getUserProgress(@PathVariable Long userId) {
-        List<WorkoutProgress> userProgress = analyticsService.getUserProgress(userId);
+        List<WorkoutProgress> userProgress = analyticsServiceImpl.getUserProgress(userId);
         return new ResponseEntity<>(userProgress, HttpStatus.OK);
     }
 
     @GetMapping("/workout-progress/{workoutId}")
     public ResponseEntity<List<WorkoutProgress>> getWorkoutProgress(@PathVariable Long workoutId) {
-        List<WorkoutProgress> workoutProgress = analyticsService.getWorkoutProgress(workoutId);
+        List<WorkoutProgress> workoutProgress = analyticsServiceImpl.getWorkoutProgress(workoutId);
         return new ResponseEntity<>(workoutProgress, HttpStatus.OK);
     }
 
     @GetMapping("/exercise-progress/{exerciseId}")
     public ResponseEntity<List<WorkoutProgress>> getExerciseProgress(@PathVariable Long exerciseId) {
-        List<WorkoutProgress> exerciseProgress = analyticsService.getExerciseProgress(exerciseId);
+        List<WorkoutProgress> exerciseProgress = analyticsServiceImpl.getExerciseProgress(exerciseId);
         return new ResponseEntity<>(exerciseProgress, HttpStatus.OK);
     }
 
@@ -44,7 +45,7 @@ public class AnalyticsController {
             @PathVariable Long userId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        List<WorkoutProgress> progressByDate = analyticsService.getProgressByDate(userId, startDate, endDate);
+        List<WorkoutProgress> progressByDate = analyticsServiceImpl.getProgressByDate(userId, startDate, endDate);
         return new ResponseEntity<>(progressByDate, HttpStatus.OK);
     }
 
@@ -52,13 +53,13 @@ public class AnalyticsController {
     public ResponseEntity<List<WorkoutProgress>> getProgressByMuscleGroup(
             @PathVariable Long userId,
             @RequestParam String muscleGroup) {
-        List<WorkoutProgress> progressByMuscleGroup = analyticsService.getProgressByMuscleGroup(userId, muscleGroup);
+        List<WorkoutProgress> progressByMuscleGroup = analyticsServiceImpl.getProgressByMuscleGroup(userId, muscleGroup);
         return new ResponseEntity<>(progressByMuscleGroup, HttpStatus.OK);
     }
 
     @GetMapping("/total-volume/{userId}")
     public ResponseEntity<Double> getTotalVolume(@PathVariable Long userId) {
-        Double totalVolume = analyticsService.getTotalVolume(userId);
+        Double totalVolume = analyticsServiceImpl.getTotalVolume(userId);
         return new ResponseEntity<>(totalVolume, HttpStatus.OK);
     }
 
@@ -68,7 +69,7 @@ public class AnalyticsController {
             @PathVariable String exerciseName,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
-        List<WorkoutProgress> weightProgress = (List<WorkoutProgress>) analyticsService.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
+        List<WorkoutProgress> weightProgress = (List<WorkoutProgress>) analyticsServiceImpl.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
         Map<LocalDate, Double> result = weightProgress.stream()
                 .collect(Collectors.toMap(WorkoutProgress::getStartTime, WorkoutProgress::getWeight));
         return new ResponseEntity<>(result, HttpStatus.OK);
@@ -79,7 +80,7 @@ public class AnalyticsController {
             @PathVariable Long userId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        Map<String, Object> userTrainingInfo = analyticsService.getUserTrainingInfo(userId, startDate, endDate );
+        Map<String, Object> userTrainingInfo = analyticsServiceImpl.getUserTrainingInfo(userId, startDate, endDate );
         return new ResponseEntity<>(userTrainingInfo, HttpStatus.OK);
     }
 
@@ -89,7 +90,7 @@ public class AnalyticsController {
             @PathVariable String muscleGroup,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
-        Map<String, Double> averageWeightProgress = analyticsService.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
+        Map<String, Double> averageWeightProgress = analyticsServiceImpl.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
         return new ResponseEntity<>(averageWeightProgress, HttpStatus.OK);
     }
 

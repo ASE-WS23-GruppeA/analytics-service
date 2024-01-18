@@ -32,3 +32,7 @@ _
 /out/production/resources/application.properties,8\5\85d7098e916a4818c04e0961d0740d145b133fae
 ‹
 [src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java,b\6\b6bca0a495e2dc057f4dd69c1c461badd54a1640
+N
+src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+‚
+Rsrc/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java,8\2\82f1233bec7754d57898b1d65224f2d7dbc9ae38
