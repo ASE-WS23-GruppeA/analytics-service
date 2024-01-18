@@ -24,8 +24,6 @@ _src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsService
 Ksrc/main/java/com/WorkoutTrackerAnalyticsService/model/WorkoutProgress.java,a\b\abf8797e8df9543461de8eb7e845a32bce9e1e25
 ƒ
 Ssrc/test/java/com/WorkoutTrackerAnalyticsServiceTest/model/WorkoutProgressTest.java,f\3\f3c8f4a254373736451a19fb5ee439c86c0763d0
-P
- src/main/java/SwaggerConfig.java,5\3\5304f2c31fbd2d016083af3e81401decb4e91a6c
 Y
 )src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
 @

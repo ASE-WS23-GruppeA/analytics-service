@@ -1,3 +1,5 @@
 
-o
-java:S2259Š"LA "NullPointerException" could be thrown; "currentWorkout" is nullable here.(Öñúûÿÿÿÿ8ë°Ã³Ñ1
+n
+java:S2259S"LA "NullPointerException" could be thrown; "currentWorkout" is nullable here.(Öñúûÿÿÿÿ8“ŠõäÑ1
+[
+java:S1144$">Remove this unused private "calculateExerciseProgress" method.(éÍ ¨8¤ŠõäÑ1

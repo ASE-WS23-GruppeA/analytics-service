@@ -47,25 +47,6 @@ public class AnalyticsService {
     }
 
 
-    public void addWorkoutProgress(WorkoutProgress workoutProgress) {
-        userProgressRepository.save(workoutProgress);
-    }
-
-    public void updateWorkoutProgress(Long progressId, WorkoutProgress updatedProgress) {
-        WorkoutProgress existingProgress = userProgressRepository.findById(progressId)
-                .orElseThrow(() -> new RuntimeException("Workout progress not found with id: " + progressId));
-
-        existingProgress.setReps(updatedProgress.getReps());
-        existingProgress.setWeight(updatedProgress.getWeight());
-        existingProgress.setMuscleGroup(updatedProgress.getMuscleGroup());
-        existingProgress.setStartTime(updatedProgress.getStartTime());
-        existingProgress.setEndTime(updatedProgress.getEndTime());
-        userProgressRepository.save(existingProgress);
-    }
-
-    public void deleteWorkoutProgress(Long progressId) {
-        userProgressRepository.deleteById(progressId);
-    }
 
     public Double getTotalVolume(Long userId) {
         List<WorkoutProgress> userProgress = userProgressRepository.findByUserID(String.valueOf(userId));
@@ -86,42 +67,6 @@ public class AnalyticsService {
 
     public List<WorkoutProgress> getWorkoutProgress(Long workoutId) {
         return userProgressRepository.findByWorkoutID(workoutId);
-    }
-
-    public Map<String, Object> calculateProgress(Long userId, LocalDate lastSessionTime) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserID(String.valueOf(userId));
-
-        Map<LocalDate, Double> workoutProgressMap = new HashMap<>();
-        Map<String, Double> exerciseProgressMap = new HashMap<>();
-
-
-        for (int i = 1; i < userWorkouts.size(); i++) {
-
-            WorkoutProgress currentWorkout = userWorkouts.get(i);
-            WorkoutProgress previousWorkout = userWorkouts.get(i - 1);
-
-            // Check if the training was after the lastTime
-            if (currentWorkout.getStartTime().isAfter(lastSessionTime)) {
-
-                double workoutProgress = calculateWorkoutProgress(currentWorkout, previousWorkout);
-
-                // Calculate overall progress for each exercise
-                Map<String, Double> exerciseProgress = calculateExerciseProgress(currentWorkout, previousWorkout);
-
-                // Add progress for current workout in the map
-                workoutProgressMap.put(currentWorkout.getStartTime(), workoutProgress);
-
-                //Update the progress map for each exercise
-                exerciseProgress.forEach((exerciseName, progress) ->
-                        exerciseProgressMap.merge(exerciseName, progress, Double::sum)
-                );
-            }
-        }
-        Map<String, Object> progressData = new HashMap<>();
-        progressData.put("workoutProgress", workoutProgressMap);
-        progressData.put("exerciseProgress", exerciseProgressMap);
-
-        return progressData;
     }
 
     public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate) {

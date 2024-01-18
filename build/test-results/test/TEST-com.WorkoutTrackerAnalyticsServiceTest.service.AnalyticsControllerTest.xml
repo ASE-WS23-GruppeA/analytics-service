@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-01-17T15:46:31" hostname="LAPTOP-8A308K7M" time="1.472">
+<testsuite name="com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-01-17T22:03:41" hostname="LAPTOP-8A308K7M" time="1.937">
   <properties/>
-  <testcase name="testGetUserTrainingInfo()" classname="com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest" time="1.472">
+  <testcase name="testGetUserTrainingInfo()" classname="com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest" time="1.937">
     <failure message="jakarta.servlet.ServletException: Request processing failed: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection [Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.] [n/a]" type="jakarta.servlet.ServletException">jakarta.servlet.ServletException: Request processing failed: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection [Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.] [n/a]
 	at app//org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
 	at app//org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
@@ -21,7 +21,7 @@
 	at app//org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
 	at app//org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
 	at app//org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
-	at app//com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest.testGetUserTrainingInfo(AnalyticsServiceTest.java:54)
+	at app//com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest.testGetUserTrainingInfo(AnalyticsServiceTest.java:65)
 	at java.base@19.0.2/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base@19.0.2/java.lang.reflect.Method.invoke(Method.java:578)
 	at app//org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
@@ -217,12 +217,12 @@ Caused by: java.net.ConnectException: Connection refused: no further information
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.5)
 
-2024-01-17T16:46:23.631+01:00  INFO 9764 --- [    Test worker] c.W.service.AnalyticsControllerTest      : Starting AnalyticsControllerTest using Java 19.0.2 with PID 9764 (started by rafae in C:\Users\rafae\OneDrive\Desktop\lessons\uni\Advanced Software Engineering\Project\workout-tracker-analytics-service)
-2024-01-17T16:46:23.637+01:00  INFO 9764 --- [    Test worker] c.W.service.AnalyticsControllerTest      : No active profile set, falling back to 1 default profile: "default"
-2024-01-17T16:46:24.498+01:00  INFO 9764 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-17T16:46:24.571+01:00  INFO 9764 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interfaces.
-2024-01-17T16:46:25.125+01:00  INFO 9764 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-17T16:46:26.195+01:00 ERROR 9764 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-01-17T23:03:27.288+01:00  INFO 12860 --- [    Test worker] c.W.service.AnalyticsControllerTest      : Starting AnalyticsControllerTest using Java 19.0.2 with PID 12860 (started by rafae in C:\Users\rafae\OneDrive\Desktop\lessons\uni\Advanced Software Engineering\Project\workout-tracker-analytics-service)
+2024-01-17T23:03:27.295+01:00  INFO 12860 --- [    Test worker] c.W.service.AnalyticsControllerTest      : No active profile set, falling back to 1 default profile: "default"
+2024-01-17T23:03:29.084+01:00  INFO 12860 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-17T23:03:29.221+01:00  INFO 12860 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 1 JPA repository interfaces.
+2024-01-17T23:03:30.475+01:00  INFO 12860 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T23:03:31.692+01:00 ERROR 12860 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342) ~[postgresql-42.6.0.jar:42.6.0]
@@ -375,12 +375,12 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.0.jar:42.6.0]
 	... 136 common frames omitted
 
-2024-01-17T16:46:26.275+01:00  INFO 9764 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-17T16:46:26.366+01:00  INFO 9764 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
-2024-01-17T16:46:26.369+01:00  INFO 9764 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2024-01-17T16:46:26.817+01:00  INFO 9764 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-01-17T16:46:26.871+01:00  INFO 9764 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-17T16:46:27.880+01:00 ERROR 9764 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-01-17T23:03:31.854+01:00  INFO 12860 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-17T23:03:32.082+01:00  INFO 12860 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2024-01-17T23:03:32.088+01:00  INFO 12860 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-01-17T23:03:33.188+01:00  INFO 12860 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-17T23:03:33.277+01:00  INFO 12860 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T23:03:34.286+01:00 ERROR 12860 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342) ~[postgresql-42.6.0.jar:42.6.0]
@@ -536,7 +536,7 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.0.jar:42.6.0]
 	... 139 common frames omitted
 
-2024-01-17T16:46:27.888+01:00  WARN 9764 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2024-01-17T23:03:34.301+01:00  WARN 12860 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
 	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
@@ -666,17 +666,18 @@ java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.Sql
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2024-01-17T16:46:27.928+01:00  WARN 9764 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-01-17T16:46:29.046+01:00  INFO 9764 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-01-17T16:46:29.049+01:00  INFO 9764 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-17T16:46:29.394+01:00  INFO 9764 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-01-17T16:46:30.253+01:00  WARN 9764 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-01-17T16:46:31.040+01:00  INFO 9764 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-01-17T16:46:31.041+01:00  INFO 9764 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-01-17T16:46:31.044+01:00  INFO 9764 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2024-01-17T16:46:31.076+01:00  INFO 9764 --- [    Test worker] c.W.service.AnalyticsControllerTest      : Started AnalyticsControllerTest in 7.899 seconds (process running for 9.721)
-2024-01-17T16:46:32.284+01:00  INFO 9764 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-17T16:46:33.315+01:00 ERROR 9764 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-01-17T23:03:34.392+01:00  WARN 12860 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-01-17T23:03:36.171+01:00  INFO 12860 --- [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.WorkoutTrackerAnalyticsService.model.WorkoutProgress (class must be instantiated by Interceptor)
+2024-01-17T23:03:36.587+01:00  INFO 12860 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-17T23:03:36.603+01:00  INFO 12860 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T23:03:37.174+01:00  INFO 12860 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-01-17T23:03:38.994+01:00  WARN 12860 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-17T23:03:40.568+01:00  INFO 12860 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-01-17T23:03:40.569+01:00  INFO 12860 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-01-17T23:03:40.575+01:00  INFO 12860 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2024-01-17T23:03:40.626+01:00  INFO 12860 --- [    Test worker] c.W.service.AnalyticsControllerTest      : Started AnalyticsControllerTest in 14.134 seconds (process running for 17.619)
+2024-01-17T23:03:42.783+01:00  INFO 12860 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T23:03:43.797+01:00 ERROR 12860 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342) ~[postgresql-42.6.0.jar:42.6.0]
@@ -771,7 +772,7 @@ org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check t
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.13.jar:6.0.13]
 	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132) ~[spring-test-6.0.13.jar:6.0.13]
 	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201) ~[spring-test-6.0.13.jar:6.0.13]
-	at com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest.testGetUserTrainingInfo(AnalyticsServiceTest.java:54) ~[test/:na]
+	at com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest.testGetUserTrainingInfo(AnalyticsServiceTest.java:65) ~[test/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727) ~[junit-platform-commons-1.9.3.jar:1.9.3]
@@ -865,8 +866,8 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.0.jar:42.6.0]
 	... 172 common frames omitted
 
-2024-01-17T16:46:33.326+01:00  WARN 9764 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
-2024-01-17T16:46:33.327+01:00 ERROR 9764 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2024-01-17T23:03:43.817+01:00  WARN 12860 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
+2024-01-17T23:03:43.818+01:00 ERROR 12860 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
