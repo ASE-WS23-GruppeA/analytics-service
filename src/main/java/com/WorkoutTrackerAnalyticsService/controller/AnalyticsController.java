@@ -1,5 +1,4 @@
 package com.WorkoutTrackerAnalyticsService.controller;
-import com.WorkoutTrackerAnalyticsService.service.AnalyticsService;
 import com.WorkoutTrackerAnalyticsService.service.AnalyticsServiceImpl;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -64,16 +63,15 @@ public class AnalyticsController {
     }
 
     @GetMapping("/weight-progress/{userId}/{exerciseName}")
-    public ResponseEntity<Map<LocalDate, Double>> getWeightProgress(
+    public ResponseEntity<Map<String, Double>> getWeightProgress(
             @PathVariable Long userId,
             @PathVariable String exerciseName,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
-        List<WorkoutProgress> weightProgress = (List<WorkoutProgress>) analyticsServiceImpl.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
-        Map<LocalDate, Double> result = weightProgress.stream()
-                .collect(Collectors.toMap(WorkoutProgress::getStartTime, WorkoutProgress::getWeight));
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        Map<String, Double> weightProgress = analyticsServiceImpl.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
+        return new ResponseEntity<>(weightProgress, HttpStatus.OK);
     }
+
 
     @GetMapping("/user-training-info/{userId}")
     public ResponseEntity<Map<String, Object>> getUserTrainingInfo(

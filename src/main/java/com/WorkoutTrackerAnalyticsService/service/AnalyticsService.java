@@ -12,9 +12,7 @@ public interface AnalyticsService {
 
     double calculateWorkoutProgress(WorkoutProgress currentWorkout, WorkoutProgress previousWorkout);
 
-    Map<String, Double> calculateExerciseProgress(WorkoutProgress currentWorkout, WorkoutProgress previousWorkout);
-
-    Double getTotalVolume(Long userId);
+    double getTotalVolume(Long userId);
 
     List<WorkoutProgress> getProgressByMuscleGroup(Long userId, String muscleGroup);
 

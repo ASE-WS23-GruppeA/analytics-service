@@ -13,11 +13,11 @@ public interface UserProgressRepository{
 
     List<WorkoutProgress> findByExerciseID(Long exerciseID);
 
-    List<WorkoutProgress> findByUserID(String userID);
+    List<WorkoutProgress> findByUserID(Long userId);
 
-    List<WorkoutProgress> findByUserIDAndMuscleGroup(String s, String muscleGroup);
+    List<WorkoutProgress> findByUserIDAndMuscleGroup(Long userId, String muscleGroup);
 
-    List<WorkoutProgress> findByUserIDAndStartTimeBetween(String s, LocalDate startDate, LocalDate endDate);
+    List<WorkoutProgress> findByUserIDAndStartTimeBetween(Long userId, LocalDate startDate, LocalDate endDate);
 
     List<WorkoutProgress> findByUserIDAndExerciseNameAndStartTimeBetween(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate);
 

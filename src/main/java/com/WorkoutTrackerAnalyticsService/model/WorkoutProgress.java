@@ -1,7 +1,6 @@
 package com.WorkoutTrackerAnalyticsService.model;
 import java.time.LocalDate;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class WorkoutProgress {
 
@@ -108,17 +107,6 @@ public class WorkoutProgress {
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-
-    // Static method to create WorkoutProgress from JSON
-    public static WorkoutProgress fromJson(String json) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            return objectMapper.readValue(json, WorkoutProgress.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error processing JSON for WorkoutProgress", e);
-        }
     }
 
 }
