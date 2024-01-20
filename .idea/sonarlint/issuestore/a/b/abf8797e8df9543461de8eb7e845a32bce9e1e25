@@ -1,0 +1,9 @@
+
+u
+java:S1845p"XRename method "setUserID" to prevent any misunderstanding/clash with method "setUserId".(‡¥Ã²8—ÓÌ¶Ò1
+z
+java:S1845t"XRename method "getUserId" to prevent any misunderstanding/clash with method "getUserID".(ýˆ¡ãøÿÿÿÿ8¿’Ë¶Ò1
+{
+java:S4144t"YUpdate this method so that its implementation is not identical to "getUserID" on line 26.(ýˆ¡ãøÿÿÿÿ8À’Ë¶Ò1
+v
+java:S4144p"YUpdate this method so that its implementation is not identical to "setUserId" on line 72.(‡¥Ã²8•ÏÍ¶Ò1

@@ -4,10 +4,7 @@ import org.springframework.stereotype.Service;
 import com.WorkoutTrackerAnalyticsService.repository.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AnalyticsServiceImpl implements AnalyticsService {
@@ -58,16 +55,20 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndExerciseNameAndStartTimeBetween(
                 userId, exerciseName, startDate, endDate);
 
-        Map<String, Double> weightProgressMap = new HashMap<>();
 
-        for (int i = 1; i < userWorkouts.size(); i++) {
-            WorkoutProgress currentWorkout = userWorkouts.get(i);
-            WorkoutProgress previousWorkout = userWorkouts.get(i - 1);
+        Map<String, Double> weightProgressMap = new LinkedHashMap<>();
 
-            double weightProgress = calculateWorkoutProgress(currentWorkout, previousWorkout);
-            weightProgressMap.put(currentWorkout.getStartTime().toString(), weightProgress);
+        for (WorkoutProgress workout : userWorkouts) {
+            // Check if the workout date is within the specified range
+            if (exerciseName.equals(workout.getExerciseName()) && userId.equals(workout.getUserId()) &&
+                    workout.getStartTime() != null &&
+                    (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
+                    (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))) {
+                double weight = workout.getWeight();
+                weightProgressMap.put(workout.getStartTime().toString(), weight);
+            }
+
         }
-
         return weightProgressMap;
     }
 
@@ -78,10 +79,15 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         Map<LocalDate, List<String>> trainingInfoMap = new HashMap<>();
 
         for (WorkoutProgress workout : userWorkouts) {
-            LocalDate workoutDate = workout.getStartTime();
-            String trainingInfo = workout.getExerciseName() + " - Sets: " + workout.getWorkoutSetsID() + ", Reps: " + workout.getReps();
+            if (userId.equals(workout.getUserId()) &&
+                    workout.getStartTime() != null &&
+                    (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
+                    (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))) {
+                LocalDate workoutDate = workout.getStartTime();
+                String trainingInfo = workout.getExerciseName() + " - Sets: " + workout.getWorkoutSetsID() + ", Reps: " + workout.getReps();
 
-            trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(trainingInfo);
+                trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(trainingInfo);
+            }
         }
 
         //The size of the map represents the number of unique dates (days) within the specified time range, and each date corresponds to a gym visit.

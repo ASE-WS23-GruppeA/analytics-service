@@ -109,5 +109,12 @@ public class WorkoutProgress {
         this.weight = weight;
     }
 
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public Long getUserId() {
+        return userID;
+    }
 }
 

@@ -66,8 +66,8 @@ public class AnalyticsController {
     public ResponseEntity<Map<String, Double>> getWeightProgress(
             @PathVariable Long userId,
             @PathVariable String exerciseName,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         Map<String, Double> weightProgress = analyticsServiceImpl.getWeightProgressForExercise(userId, exerciseName, startDate, endDate);
         return new ResponseEntity<>(weightProgress, HttpStatus.OK);
     }
