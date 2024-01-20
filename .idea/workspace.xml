@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a58628fd-629e-429b-83b2-1f1fa95dade8" name="Changes" comment="edited README">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abf8797e8df9543461de8eb7e845a32bce9e1e25" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/b/abf8797e8df9543461de8eb7e845a32bce9e1e25" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/controller/AnalyticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/controller/AnalyticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/model/WorkoutProgress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/model/WorkoutProgress.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -297,7 +295,7 @@
       <workItem from="1705575933006" duration="5945000" />
       <workItem from="1705589878400" duration="909000" />
       <workItem from="1705605601330" duration="15145000" />
-      <workItem from="1705746781422" duration="8840000" />
+      <workItem from="1705746781422" duration="12601000" />
     </task>
     <task id="LOCAL-00001" summary="edited README">
       <option name="closed" value="true" />

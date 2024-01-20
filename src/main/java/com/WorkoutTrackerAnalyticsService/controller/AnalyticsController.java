@@ -83,12 +83,12 @@ public class AnalyticsController {
     }
 
     @GetMapping("/average-weight-progress/{userId}/{muscleGroup}")
-    public ResponseEntity<Map<String, Double>> getAverageWeightProgress(
+    public ResponseEntity<Map<String, Object>> getAverageWeightProgress(
             @PathVariable Long userId,
             @PathVariable String muscleGroup,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
-        Map<String, Double> averageWeightProgress = analyticsServiceImpl.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
+        Map<String, Object> averageWeightProgress = analyticsServiceImpl.getAverageWeightProgressByMuscleGroup(userId, muscleGroup, startDate, endDate);
         return new ResponseEntity<>(averageWeightProgress, HttpStatus.OK);
     }
 

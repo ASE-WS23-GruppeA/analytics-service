@@ -100,26 +100,30 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         return result;
     }
 
-    public Map<String, Double> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
+    public Map<String, Object> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
         List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndMuscleGroupAndStartTimeBetween(
                 userId, muscleGroup, startDate, endDate);
 
-        Map<String, Double> averageWeightProgressMap = new HashMap<>();
-        Map<String, Integer> exerciseCountMap = new HashMap<>();
+        double totalWeightProgress = 0.0;
 
         for (WorkoutProgress workout : userWorkouts) {
-            String exerciseName = workout.getExerciseName();
-            double weightProgress = calculateWorkoutProgress(workout, getPreviousWorkout(userWorkouts, workout));
-
-            averageWeightProgressMap.merge(exerciseName, weightProgress, Double::sum);
-            exerciseCountMap.merge(exerciseName, 1, Integer::sum);
+            if (userId.equals(workout.getUserId()) &&
+                    workout.getStartTime() != null &&
+                    (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
+                    (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))){
+                totalWeightProgress += workout.getWeight();
+        }
         }
 
-        averageWeightProgressMap.forEach((exerciseName, totalWeightProgress) ->
-                averageWeightProgressMap.put(exerciseName, totalWeightProgress / exerciseCountMap.get(exerciseName)));
 
-        return averageWeightProgressMap;
+        Map<String, Object> result = new HashMap<>();
+        result.put("averageWeightProgress", totalWeightProgress);
+        result.put("MuscleGroup", muscleGroup);
+
+        return result;
     }
+
+
 
     public WorkoutProgress getPreviousWorkout(List<WorkoutProgress> userWorkouts, WorkoutProgress currentWorkout) {
         int currentIndex = userWorkouts.indexOf(currentWorkout);

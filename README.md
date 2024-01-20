@@ -39,11 +39,11 @@ To use the "Analytics Service," make HTTP requests to the provided API endpoints
 
 6. **Retrieve Total Volume**: To retrieve the total workout volume for a specific user, you can make a GET request to the `/analytics/total-volume/{userId}` endpoint, where `:userID` is the user's ID.
    
-7. **Retrieve Weight Progress for Exercise**: To retrieve the weight progress for a specific exercise and user within a date range, make a GET request to the `/weight-progress/{userId}/{exerciseName}` endpoint. Include startDate and endDate as query parameters in the format yyyy-MM-dd if you want to specify a date range. (Example: `/weight-progress/123/BenchPress?startDate=2023-01-01&endDate=2023-12-31`)
+7. **Retrieve Weight Progress for Exercise**: To retrieve the weight progress for a specific exercise and user within a date range, make a GET request to the `/weight-progress/{userId}/{exerciseName}` endpoint. Include startDate and endDate as query parameters in the format yyyy-MM-dd if you want to specify a date range. (Example: `/weight-progress/1/Pull-ups?startDate=2023-01-01&endDate=2025-12-31`)
 
-8. **Retrieve User Training Information**: To retrieve user training information, including the number of gym visits and detailed training information for each day within a specified time range, make a GET request to the `/user-training-info/{userId}` endpoint. Include startDate and endDate as query parameters in the format yyyy-MM-dd if you want to specify a date range. (Example: `/user-training-info/123?startDate=2023-01-01&endDate=2023-12-31`)
-
-9. **Retrieve Average Weight Progress by Muscle Group**: To retrieve the average weight progress for a specific muscle group and user within a date range, make a GET request to the `/average-weight-progress/{userId}/{muscleGroup}` endpoint. Include startDate and endDate as query parameters in the format yyyy-MM-dd if you want to specify a date range. (Example: `/average-weight-progress/123/Legs?startDate=2023-01-01&endDate=2023-12-31`)
+8. **Retrieve User Training Information**: To retrieve user training information, including the number of gym visits and detailed training information for each day within a specified time range, make a GET request to the `/user-training-info/{userId}` endpoint. Include startDate and endDate as query parameters in the format yyyy-MM-dd if you want to specify a date range. (Example: `/user-training-info/1?startDate=2023-01-01&endDate=2025-12-31`)
+   
+9. **Retrieve Average Weight Progress by Muscle Group**: To retrieve the average weight progress for a specific muscle group and user within a date range, make a GET request to the `/average-weight-progress/{userId}/{muscleGroup}` endpoint. Include startDate and endDate as query parameters in the format yyyy-MM-dd if you want to specify a date range. (Example: `/average-weight-progress/2/Legs?startDate=2023-01-01&endDate=2025-12-31`)
 
 You can interact with the service using your preferred API client (e.g., Insomnia, Postman) or by integrating it into your web application.
 

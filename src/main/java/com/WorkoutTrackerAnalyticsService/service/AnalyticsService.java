@@ -26,7 +26,7 @@ public interface AnalyticsService {
 
     Map<String, Object> getUserTrainingInfo(Long userId, LocalDate startDate, LocalDate endDate);
 
-    Map<String, Double> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate);
+    Map<String, Object> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate);
 
     WorkoutProgress getPreviousWorkout(List<WorkoutProgress> userWorkouts, WorkoutProgress currentWorkout);
 }

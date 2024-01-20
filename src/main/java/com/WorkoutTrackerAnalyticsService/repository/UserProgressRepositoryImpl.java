@@ -109,27 +109,43 @@ public class UserProgressRepositoryImpl implements UserProgressRepository{
         return List.of(workout1, workout2, workout3,workout4, workout5);
     }
 
-    @Override
-    public List<WorkoutProgress> findByUserIDAndMuscleGroupAndStartTimeBetween(
-            Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
-        // Mock data for testing
-        WorkoutProgress workout1 = new WorkoutProgress();
-        workout1.setUserId(userId);
-        workout1.setMuscleGroup(muscleGroup);
-        workout1.setExerciseName("Squats");
-        workout1.setReps(12);
-        workout1.setWeight(50.0);
-        workout1.setStartTime(startDate);
+        @Override
+        public List<WorkoutProgress> findByUserIDAndMuscleGroupAndStartTimeBetween(
+                Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
+            // Mock data for testing
+            WorkoutProgress workout1 = new WorkoutProgress();
+            workout1.setUserId(1L);
+            workout1.setMuscleGroup("Legs");
+            workout1.setExerciseName("Squats");
+            workout1.setReps(12);
+            workout1.setWeight(50.0);
+            workout1.setStartTime(LocalDate.of(2023, 1, 1));
 
-        WorkoutProgress workout2 = new WorkoutProgress();
-        workout2.setUserId(userId);
-        workout2.setMuscleGroup(muscleGroup);
-        workout2.setExerciseName("Deadlifts");
-        workout2.setReps(8);
-        workout2.setWeight(80.0);
-        workout2.setStartTime(startDate.plusDays(1));
+            WorkoutProgress workout2 = new WorkoutProgress();
+            workout2.setUserId(1L);
+            workout2.setMuscleGroup("Legs");
+            workout2.setExerciseName("Deadlifts");
+            workout2.setReps(8);
+            workout2.setWeight(80.0);
+            workout2.setStartTime(LocalDate.of(2023, 1, 2));
 
-        // Return the mock data
-        return List.of(workout1, workout2);
-    }
+            WorkoutProgress workout3 = new WorkoutProgress();
+            workout3.setUserId(2L);
+            workout3.setMuscleGroup("Legs");
+            workout3.setExerciseName("Squats");
+            workout3.setReps(12);
+            workout3.setWeight(10.0);
+            workout3.setStartTime(LocalDate.of(2023, 1, 10));
+
+            WorkoutProgress workout4 = new WorkoutProgress();
+            workout4.setUserId(2L);
+            workout4.setMuscleGroup("Legs");
+            workout4.setExerciseName("Hack-squat");
+            workout4.setReps(8);
+            workout4.setWeight(20.0);
+            workout4.setStartTime(LocalDate.of(2024, 1, 12));
+
+            // Return the mock data
+            return List.of(workout1, workout2,workout3,workout4);
+        }
 }
