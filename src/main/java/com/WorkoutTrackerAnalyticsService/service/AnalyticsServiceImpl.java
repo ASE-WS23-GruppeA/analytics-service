@@ -2,24 +2,27 @@ package com.WorkoutTrackerAnalyticsService.service;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.stereotype.Service;
 import com.WorkoutTrackerAnalyticsService.repository.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AnalyticsServiceImpl implements AnalyticsService {
     private final UserProgressRepositoryImpl userProgressRepositoryImpl;
 
 
+
     public AnalyticsServiceImpl(UserProgressRepositoryImpl userProgressRepositoryImpl) {
         this.userProgressRepositoryImpl = userProgressRepositoryImpl;
+
     }
 
     public List<WorkoutProgress> getUserProgress(Long workoutId) {
         return userProgressRepositoryImpl.findByWorkoutID(workoutId);
     }
-
-
+    
     public double calculateWorkoutProgress(WorkoutProgress currentWorkout, WorkoutProgress previousWorkout) {
         // Calculate overall progress for each workout session (in kg)
         double progress = 0.0;
@@ -28,7 +31,6 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         }
         return progress;
     }
-
 
     public double getTotalVolume(Long userId) {
         List<WorkoutProgress> userProgress = userProgressRepositoryImpl.findByUserID(userId);
@@ -76,7 +78,7 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndStartTimeBetween(
                 userId, startDate, endDate);
 
-        Map<LocalDate, List<String>> trainingInfoMap = new HashMap<>();
+        Map<LocalDate, List<Map<String, Object>>> trainingInfoMap = new HashMap<>();
 
         for (WorkoutProgress workout : userWorkouts) {
             if (userId.equals(workout.getUserId()) &&
@@ -84,13 +86,23 @@ public class AnalyticsServiceImpl implements AnalyticsService {
                     (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
                     (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))) {
                 LocalDate workoutDate = workout.getStartTime();
-                String trainingInfo = workout.getExerciseName() + " - Sets: " + workout.getWorkoutSetsID() + ", Reps: " + workout.getReps();
 
-                trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(trainingInfo);
+                Map<String, Object> exerciseInfo = new HashMap<>();
+                exerciseInfo.put("exercise", workout.getExerciseName());
+                exerciseInfo.put("sets", workout.getWorkoutSetsID());
+                exerciseInfo.put("reps", workout.getReps());
+
+                trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(exerciseInfo);
             }
         }
 
-        //The size of the map represents the number of unique dates (days) within the specified time range, and each date corresponds to a gym visit.
+        // Sort the map by dates
+        trainingInfoMap = trainingInfoMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
+        // The size of the map represents the number of unique dates (days) within the specified time range,
+        // and each date corresponds to a gym visit.
         int gymVisits = trainingInfoMap.size();
 
         Map<String, Object> result = new HashMap<>();
@@ -99,6 +111,7 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
         return result;
     }
+
 
     public Map<String, Object> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
         List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndMuscleGroupAndStartTimeBetween(
@@ -122,8 +135,6 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
         return result;
     }
-
-
 
     public WorkoutProgress getPreviousWorkout(List<WorkoutProgress> userWorkouts, WorkoutProgress currentWorkout) {
         int currentIndex = userWorkouts.indexOf(currentWorkout);

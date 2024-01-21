@@ -52,7 +52,7 @@ public class UserProgressRepositoryImpl implements UserProgressRepository{
         workout3.setExerciseName("Pull-ups");
         workout3.setReps(10);
         workout3.setWeight(0.0);
-        workout3.setStartTime(LocalDate.of(2023, 1, 2));
+        workout3.setStartTime(LocalDate.of(2023, 1, 6));
 
         WorkoutProgress workout4 = new WorkoutProgress();
         workout4.setUserId(1L);
@@ -61,10 +61,15 @@ public class UserProgressRepositoryImpl implements UserProgressRepository{
         workout4.setWeight(0.0);
         workout4.setStartTime(LocalDate.of(2023, 1, 3));
 
-
+        WorkoutProgress workout5 = new WorkoutProgress();
+        workout5.setUserId(2L);
+        workout5.setExerciseName("Pull-ups");
+        workout5.setReps(10);
+        workout5.setWeight(0.0);
+        workout5.setStartTime(LocalDate.of(2023, 1, 2));
 
         // Return the mock data
-        return List.of(workout1, workout2,workout3,workout4);
+        return List.of(workout1, workout2,workout3,workout4,workout5);
     }
 
     @Override

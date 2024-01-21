@@ -8,6 +8,8 @@ import java.util.Map;
 
 public interface AnalyticsService {
 
+
+
     List<WorkoutProgress> getUserProgress(Long workoutId);
 
     double calculateWorkoutProgress(WorkoutProgress currentWorkout, WorkoutProgress previousWorkout);
