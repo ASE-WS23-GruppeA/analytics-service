@@ -29,12 +29,4 @@ public class ExerciseDTO {
         this.muscleGroup = muscleGroup;
     }
 
-    public ExerciseDTO(Long exerciseID, String exerciseName, String muscleGroup) {
-        this.exerciseID = exerciseID;
-        this.exerciseName = exerciseName;
-        this.muscleGroup = muscleGroup;
-    }
-
-    public ExerciseDTO() {
-    }
 }

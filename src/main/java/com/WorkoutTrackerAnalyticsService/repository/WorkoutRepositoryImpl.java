@@ -24,19 +24,19 @@ public class WorkoutRepositoryImpl implements WorkoutRepository {
     }
 
     public List<WorkoutDTO> getAllWorkoutsForUser(Long UserID) {
-        String url = workoutServiceUrl + "/workouts/user/:"+UserID;
+        String url = workoutServiceUrl + "/workouts/user/"+UserID;
         WorkoutDTO[] responseArray = restTemplate.getForObject(url, WorkoutDTO[].class);
         return Arrays.asList(responseArray);
     }
 
     public WorkoutDTO getLastWorkoutForUser(Long UserID) {
-        String url = workoutServiceUrl + "/workouts/last/:"+UserID;
+        String url = workoutServiceUrl + "/workouts/last/"+UserID;
       WorkoutDTO responseArray = restTemplate.getForObject(url, WorkoutDTO.class);
         return responseArray;
     }
 
     public List<WorkoutDTO> getWorkoutByName(Long userId, String workoutName) {
-        String url = workoutServiceUrl + "/workouts/user/:" + userId + "/:" + workoutName;
+        String url = workoutServiceUrl + "/workouts/user/" + userId + "/" + workoutName;
         WorkoutDTO[] responseArray = restTemplate.getForObject(url, WorkoutDTO[].class);
         return Arrays.asList(responseArray);
 

@@ -11,17 +11,6 @@ public class WorkoutDTO {
 
     private List<WorkoutSetDTO> workoutSets;
 
-    public WorkoutDTO() {
-    }
-
-    public WorkoutDTO(long userID, long workoutID, String workoutName, String createdDate, List<WorkoutSetDTO> workoutSets) {
-        this.userID = userID;
-        this.workoutID = workoutID;
-        this.workoutName = workoutName;
-        this.createdDate = createdDate;
-        this.workoutSets = workoutSets;
-    }
-
     public long getUserID() {
         return userID;
     }
@@ -29,9 +18,6 @@ public class WorkoutDTO {
     public void setUserID(long userID) {
         this.userID = userID;
     }
-
-
-
 
     public long getWorkoutID() {
         return workoutID;

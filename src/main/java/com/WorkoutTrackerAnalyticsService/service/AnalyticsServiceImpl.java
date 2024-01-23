@@ -1,9 +1,9 @@
 package com.WorkoutTrackerAnalyticsService.service;
-import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.stereotype.Service;
 import com.WorkoutTrackerAnalyticsService.repository.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,10 +24,10 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         Map<String, Double> weightProgressMap = new LinkedHashMap<>();
 
         for (WorkoutDTO workout : userWorkouts) {
-            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate(), formatter);
 
             if (exerciseName.equals(workout.getWorkoutName()) &&
-                    workoutDate != null &&
                     (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
                     (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
                 for (WorkoutSetDTO set : workout.getWorkoutSets()) {
@@ -39,17 +39,18 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         return weightProgressMap;
     }
 
-
+ lc
     public Map<String, Object> getUserTrainingInfo(Long userId, LocalDate startDate, LocalDate endDate) {
         List<WorkoutDTO> userWorkouts = workoutRepository.getAllWorkoutsForUser(userId);
 
         Map<LocalDate, List<Map<String, Object>>> trainingInfoMap = new HashMap<>();
 
         for (WorkoutDTO workout : userWorkouts) {
-            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate(), formatter);
+
 
             if (userId.equals(workout.getUserID()) &&
-                    workoutDate != null &&
                     (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
                     (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
 
@@ -88,10 +89,11 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         int count = 0;
 
         for (WorkoutDTO workout : userWorkouts) {
-            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate(), formatter);
+
 
             if (userId.equals(workout.getUserID()) &&
-                    workoutDate != null &&
                     (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
                     (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
                 for (WorkoutSetDTO set : workout.getWorkoutSets()) {

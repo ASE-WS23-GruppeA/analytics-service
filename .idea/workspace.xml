@@ -5,21 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a58628fd-629e-429b-83b2-1f1fa95dade8" name="Changes" comment="edited README">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/workout-tracker-analytics-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/workout-tracker-analytics-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/workout-tracker-analytics-service.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/workout-tracker-analytics-service.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/workout-tracker-analytics-service.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/workout-tracker-analytics-service.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/75f54a9793213393ad8bb96555fb56025e27efb6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/75f54a9793213393ad8bb96555fb56025e27efb6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutSetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutSetDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,8 +53,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -96,6 +93,7 @@
     "Gradle.AnalyticsControllerTest.executor": "Run",
     "Gradle.Build workout-tracker-analytics-service.executor": "Run",
     "Gradle.Tests in 'workout-tracker-analytics-service.test'.executor": "Run",
+    "HTTP Request.generated-requests | #1.executor": "Run",
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
     "HTTP Request.generated-requests | #5.executor": "Run",
@@ -174,26 +172,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'workout-tracker-analytics-service.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
@@ -214,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
-        <item itemvalue="HTTP Request.generated-requests | #4" />
         <item itemvalue="HTTP Request.generated-requests | #5" />
+        <item itemvalue="HTTP Request.generated-requests | #4" />
         <item itemvalue="Gradle.AnalyticsControllerTest" />
-        <item itemvalue="Gradle.Tests in 'workout-tracker-analytics-service.test'" />
       </list>
     </recent_temporary>
   </component>
@@ -364,6 +343,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="edited README" />
     <option name="LAST_COMMIT_MESSAGE" value="edited README" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java</url>
+          <line>25</line>
+          <properties class="com.WorkoutTrackerAnalyticsService.repository.WorkoutRepositoryImpl" method="getAllWorkoutsForUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/workout_tracker_analytics_service$Tests_in__workout_tracker_analytics_service_test_.ic" NAME="Tests in 'workout-tracker-analytics-service.test' Coverage Results" MODIFIED="1705404823090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
