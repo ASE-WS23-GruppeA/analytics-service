@@ -2,7 +2,6 @@ package com.WorkoutTrackerAnalyticsService.service;
 import com.WorkoutTrackerAnalyticsService.model.WorkoutProgress;
 import org.springframework.stereotype.Service;
 import com.WorkoutTrackerAnalyticsService.repository.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -10,51 +9,18 @@ import java.util.stream.Collectors;
 
 @Service
 public class AnalyticsServiceImpl implements AnalyticsService {
-    private final UserProgressRepositoryImpl userProgressRepositoryImpl;
+    private final UserProgressRepository userProgressRepository;
+    private final WorkoutRepository workoutService;
+    private final ExerciseRepository exerciseService;
 
-
-
-    public AnalyticsServiceImpl(UserProgressRepositoryImpl userProgressRepositoryImpl) {
-        this.userProgressRepositoryImpl = userProgressRepositoryImpl;
-
-    }
-
-    public List<WorkoutProgress> getUserProgress(Long workoutId) {
-        return userProgressRepositoryImpl.findByWorkoutID(workoutId);
-    }
-    
-    public double calculateWorkoutProgress(WorkoutProgress currentWorkout, WorkoutProgress previousWorkout) {
-        // Calculate overall progress for each workout session (in kg)
-        double progress = 0.0;
-        if (currentWorkout != null && previousWorkout != null) {
-            progress = currentWorkout.getWeight() - previousWorkout.getWeight();
-        }
-        return progress;
-    }
-
-    public double getTotalVolume(Long userId) {
-        List<WorkoutProgress> userProgress = userProgressRepositoryImpl.findByUserID(userId);
-        return userProgress.stream().mapToDouble(WorkoutProgress::getWeight).sum();
-    }
-
-    public List<WorkoutProgress> getProgressByMuscleGroup(Long userId, String muscleGroup) {
-        return userProgressRepositoryImpl.findByUserIDAndMuscleGroup(userId, muscleGroup);
-    }
-
-    public List<WorkoutProgress> getProgressByDate(Long userId, LocalDate startDate, LocalDate endDate) {
-        return userProgressRepositoryImpl.findByUserIDAndStartTimeBetween(userId, startDate, endDate);
-    }
-
-    public List<WorkoutProgress> getExerciseProgress(Long exerciseId) {
-        return userProgressRepositoryImpl.findByExerciseID(exerciseId);
-    }
-
-    public List<WorkoutProgress> getWorkoutProgress(Long workoutId) {
-        return userProgressRepositoryImpl.findByWorkoutID(workoutId);
+    public AnalyticsServiceImpl(UserProgressRepository userProgressRepository, WorkoutRepository workoutService,  ExerciseRepository exerciseService) {
+        this.userProgressRepository = userProgressRepository;
+        this.workoutService = workoutService;
+        this.exerciseService = exerciseService;
     }
 
     public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndExerciseNameAndStartTimeBetween(
+        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndExerciseNameAndStartTimeBetween(
                 userId, exerciseName, startDate, endDate);
 
 
@@ -75,7 +41,7 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     }
 
     public Map<String, Object> getUserTrainingInfo(Long userId, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndStartTimeBetween(
+        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndStartTimeBetween(
                 userId, startDate, endDate);
 
         Map<LocalDate, List<Map<String, Object>>> trainingInfoMap = new HashMap<>();
@@ -114,7 +80,7 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
 
     public Map<String, Object> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepositoryImpl.findByUserIDAndMuscleGroupAndStartTimeBetween(
+        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndMuscleGroupAndStartTimeBetween(
                 userId, muscleGroup, startDate, endDate);
 
         double totalWeightProgress = 0.0;

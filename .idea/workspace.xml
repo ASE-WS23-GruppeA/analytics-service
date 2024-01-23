@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a58628fd-629e-429b-83b2-1f1fa95dade8" name="Changes" comment="edited README">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutSetDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/controller/AnalyticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/controller/AnalyticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +59,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -116,6 +130,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.WorkoutTrackerAnalyticsService.service" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\rafae\OneDrive\Desktop\уроки\uni\Advanced Software Engineering\Project\workout-tracker-analytics-service\src\main\java\com\WorkoutTrackerAnalyticsService" />
       <recent name="C:\Users\rafae\OneDrive\Desktop\уроки\uni\Advanced Software Engineering\Project\workout-tracker-analytics-service\src\main\java" />
@@ -298,7 +315,12 @@
       <workItem from="1705765023639" duration="33000" />
       <workItem from="1705766433509" duration="403000" />
       <workItem from="1705778652365" duration="2666000" />
-      <workItem from="1705825187585" duration="1221000" />
+      <workItem from="1705825187585" duration="3350000" />
+      <workItem from="1705860720565" duration="4712000" />
+      <workItem from="1705930547842" duration="4420000" />
+      <workItem from="1705956381852" duration="448000" />
+      <workItem from="1705960334559" duration="1141000" />
+      <workItem from="1706011014159" duration="199000" />
     </task>
     <task id="LOCAL-00001" summary="edited README">
       <option name="closed" value="true" />
@@ -344,17 +366,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="edited README" />
     <option name="LAST_COMMIT_MESSAGE" value="edited README" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/workout_tracker_analytics_service$Tests_in__workout_tracker_analytics_service_test_.ic" NAME="Tests in 'workout-tracker-analytics-service.test' Coverage Results" MODIFIED="1705404823090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

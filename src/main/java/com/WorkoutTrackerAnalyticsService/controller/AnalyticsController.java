@@ -9,7 +9,6 @@ import java.time.LocalDate;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -21,46 +20,6 @@ public class AnalyticsController {
         this.analyticsServiceImpl = analyticsServiceImpl;
     }
 
-    @GetMapping("/user-progress/{userId}")
-    public ResponseEntity<List<WorkoutProgress>> getUserProgress(@PathVariable Long userId) {
-        List<WorkoutProgress> userProgress = analyticsServiceImpl.getUserProgress(userId);
-        return new ResponseEntity<>(userProgress, HttpStatus.OK);
-    }
-
-    @GetMapping("/workout-progress/{workoutId}")
-    public ResponseEntity<List<WorkoutProgress>> getWorkoutProgress(@PathVariable Long workoutId) {
-        List<WorkoutProgress> workoutProgress = analyticsServiceImpl.getWorkoutProgress(workoutId);
-        return new ResponseEntity<>(workoutProgress, HttpStatus.OK);
-    }
-
-    @GetMapping("/exercise-progress/{exerciseId}")
-    public ResponseEntity<List<WorkoutProgress>> getExerciseProgress(@PathVariable Long exerciseId) {
-        List<WorkoutProgress> exerciseProgress = analyticsServiceImpl.getExerciseProgress(exerciseId);
-        return new ResponseEntity<>(exerciseProgress, HttpStatus.OK);
-    }
-
-    @GetMapping("/progress-by-date/{userId}")
-    public ResponseEntity<List<WorkoutProgress>> getProgressByDate(
-            @PathVariable Long userId,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        List<WorkoutProgress> progressByDate = analyticsServiceImpl.getProgressByDate(userId, startDate, endDate);
-        return new ResponseEntity<>(progressByDate, HttpStatus.OK);
-    }
-
-    @GetMapping("/progress-by-muscle-group/{userId}")
-    public ResponseEntity<List<WorkoutProgress>> getProgressByMuscleGroup(
-            @PathVariable Long userId,
-            @RequestParam String muscleGroup) {
-        List<WorkoutProgress> progressByMuscleGroup = analyticsServiceImpl.getProgressByMuscleGroup(userId, muscleGroup);
-        return new ResponseEntity<>(progressByMuscleGroup, HttpStatus.OK);
-    }
-
-    @GetMapping("/total-volume/{userId}")
-    public ResponseEntity<Double> getTotalVolume(@PathVariable Long userId) {
-        Double totalVolume = analyticsServiceImpl.getTotalVolume(userId);
-        return new ResponseEntity<>(totalVolume, HttpStatus.OK);
-    }
 
     @GetMapping("/weight-progress/{userId}/{exerciseName}")
     public ResponseEntity<Map<String, Double>> getWeightProgress(
