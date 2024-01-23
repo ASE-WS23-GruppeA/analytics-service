@@ -9,56 +9,58 @@ import java.util.stream.Collectors;
 
 @Service
 public class AnalyticsServiceImpl implements AnalyticsService {
-    private final UserProgressRepository userProgressRepository;
-    private final WorkoutRepository workoutService;
-    private final ExerciseRepository exerciseService;
+    private final WorkoutRepositoryImpl workoutRepository;
+    private final ExerciseRepository exerciseRepository;
 
-    public AnalyticsServiceImpl(UserProgressRepository userProgressRepository, WorkoutRepository workoutService,  ExerciseRepository exerciseService) {
-        this.userProgressRepository = userProgressRepository;
-        this.workoutService = workoutService;
-        this.exerciseService = exerciseService;
+    public AnalyticsServiceImpl(WorkoutRepositoryImpl workoutRepository, ExerciseRepository exerciseRepository) {
+        this.workoutRepository = workoutRepository;
+        this.exerciseRepository = exerciseRepository;
     }
 
-    public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndExerciseNameAndStartTimeBetween(
-                userId, exerciseName, startDate, endDate);
 
+    public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate) {
+        List<WorkoutDTO> userWorkouts = workoutRepository.getAllWorkoutsForUser(userId);
 
         Map<String, Double> weightProgressMap = new LinkedHashMap<>();
 
-        for (WorkoutProgress workout : userWorkouts) {
-            // Check if the workout date is within the specified range
-            if (exerciseName.equals(workout.getExerciseName()) && userId.equals(workout.getUserId()) &&
-                    workout.getStartTime() != null &&
-                    (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
-                    (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))) {
-                double weight = workout.getWeight();
-                weightProgressMap.put(workout.getStartTime().toString(), weight);
-            }
+        for (WorkoutDTO workout : userWorkouts) {
+            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate());
 
+            if (exerciseName.equals(workout.getWorkoutName()) &&
+                    workoutDate != null &&
+                    (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
+                    (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
+                for (WorkoutSetDTO set : workout.getWorkoutSets()) {
+                    double weight = set.getWeights();
+                    weightProgressMap.put(workoutDate.toString(), weight);
+                }
+            }
         }
         return weightProgressMap;
     }
 
+
     public Map<String, Object> getUserTrainingInfo(Long userId, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndStartTimeBetween(
-                userId, startDate, endDate);
+        List<WorkoutDTO> userWorkouts = workoutRepository.getAllWorkoutsForUser(userId);
 
         Map<LocalDate, List<Map<String, Object>>> trainingInfoMap = new HashMap<>();
 
-        for (WorkoutProgress workout : userWorkouts) {
-            if (userId.equals(workout.getUserId()) &&
-                    workout.getStartTime() != null &&
-                    (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
-                    (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))) {
-                LocalDate workoutDate = workout.getStartTime();
+        for (WorkoutDTO workout : userWorkouts) {
+            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate());
 
-                Map<String, Object> exerciseInfo = new HashMap<>();
-                exerciseInfo.put("exercise", workout.getExerciseName());
-                exerciseInfo.put("sets", workout.getWorkoutSetsID());
-                exerciseInfo.put("reps", workout.getReps());
+            if (userId.equals(workout.getUserID()) &&
+                    workoutDate != null &&
+                    (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
+                    (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
 
-                trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(exerciseInfo);
+                for (WorkoutSetDTO set : workout.getWorkoutSets()) {
+                    Map<String, Object> exerciseInfo = new HashMap<>();
+                    exerciseInfo.put("exercise", exerciseRepository.getExerciseById(set.getExerciseID()).getExerciseName());
+                    exerciseInfo.put("sets", set.getWorkoutSetsID());
+                    exerciseInfo.put("reps", set.getReps());
+
+                    trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(exerciseInfo);
+                }
             }
         }
 
@@ -80,33 +82,37 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
 
     public Map<String, Object> getAverageWeightProgressByMuscleGroup(Long userId, String muscleGroup, LocalDate startDate, LocalDate endDate) {
-        List<WorkoutProgress> userWorkouts = userProgressRepository.findByUserIDAndMuscleGroupAndStartTimeBetween(
-                userId, muscleGroup, startDate, endDate);
+        List<WorkoutDTO> userWorkouts = workoutRepository.getAllWorkoutsForUser(userId);
 
         double totalWeightProgress = 0.0;
+        int count = 0;
 
-        for (WorkoutProgress workout : userWorkouts) {
-            if (userId.equals(workout.getUserId()) &&
-                    workout.getStartTime() != null &&
-                    (workout.getStartTime().isEqual(startDate) || workout.getStartTime().isAfter(startDate)) &&
-                    (workout.getStartTime().isEqual(endDate) || workout.getStartTime().isBefore(endDate))){
-                totalWeightProgress += workout.getWeight();
-        }
-        }
+        for (WorkoutDTO workout : userWorkouts) {
+            LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate());
 
+            if (userId.equals(workout.getUserID()) &&
+                    workoutDate != null &&
+                    (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
+                    (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
+                for (WorkoutSetDTO set : workout.getWorkoutSets()) {
+                    if (exerciseRepository.getExerciseById(set.getExerciseID()).getMuscleGroup().equals(muscleGroup)) {
+                        totalWeightProgress += set.getWeights();
+                        count++;
+                    }
+                }
+            }
+        }
 
         Map<String, Object> result = new HashMap<>();
-        result.put("averageWeightProgress", totalWeightProgress);
+        if (count > 0) {
+            result.put("averageWeightProgress", totalWeightProgress / count);
+        } else {
+            result.put("averageWeightProgress", 0.0);
+        }
         result.put("MuscleGroup", muscleGroup);
 
         return result;
     }
-
-    public WorkoutProgress getPreviousWorkout(List<WorkoutProgress> userWorkouts, WorkoutProgress currentWorkout) {
-        int currentIndex = userWorkouts.indexOf(currentWorkout);
-        return (currentIndex > 0) ? userWorkouts.get(currentIndex - 1) : null;
-    }
-
 
 
 }

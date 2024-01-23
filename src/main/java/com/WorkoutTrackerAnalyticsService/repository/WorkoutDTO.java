@@ -30,18 +30,8 @@ public class WorkoutDTO {
         this.userID = userID;
     }
 
-    @Override
-    public boolean equals(Object o) `{
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        WorkoutDTO that = (WorkoutDTO) o;
-        return userID == that.userID && workoutID == that.workoutID && Objects.equals(workoutName, that.workoutName) && Objects.equals(createdDate, that.createdDate) && Objects.equals(workoutSets, that.workoutSets);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(userID, workoutID, workoutName, createdDate, workoutSets);
-    }
+
 
     public long getWorkoutID() {
         return workoutID;
