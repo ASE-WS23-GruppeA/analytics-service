@@ -5,18 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a58628fd-629e-429b-83b2-1f1fa95dade8" name="Changes" comment="edited README">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/WorkoutTrackerAnalyticsServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/WorkoutTrackerAnalyticsServiceTest/WorkoutTrackerAnalyticsServiceApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/WorkoutTrackerAnalyticsServiceTest/controller/AnalyticsControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/WorkoutTrackerAnalyticsServiceTest/repository/UserProgressRepositoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/WorkoutTrackerAnalyticsServiceTest/service/AnalyticsServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/workout-tracker-analytics-service-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/workout-tracker-analytics-service-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/workout-tracker-analytics-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/workout-tracker-analytics-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.WorkoutTrackerAnalyticsServiceTest.service.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +106,10 @@
     "Gradle.AnalyticsControllerTest.executor": "Run",
     "Gradle.Build workout-tracker-analytics-service.executor": "Run",
     "Gradle.Tests in 'workout-tracker-analytics-service.test'.executor": "Run",
+    "Gradle.workout-tracker-analytics-service [:build].executor": "Run",
+    "Gradle.workout-tracker-analytics-service [clean assemble].executor": "Run",
     "HTTP Request.generated-requests | #1.executor": "Run",
+    "HTTP Request.generated-requests | #2.executor": "Run",
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
     "HTTP Request.generated-requests | #5.executor": "Run",
@@ -145,10 +161,11 @@
       <command value="gradle generate-sources" />
       <command value="gradle buildNeeded" />
       <command value="gradle :build" />
+      <command value="gradle clean assemble" />
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.WorkoutTrackerAnalyticsServiceApplication">
-    <configuration name="AnalyticsControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="workout-tracker-analytics-service [clean assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -159,29 +176,28 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.WorkoutTrackerAnalyticsServiceTest.service.AnalyticsControllerTest&quot;" />
+            <option value="clean" />
+            <option value="assemble" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" requestIdentifier="#2" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="generated-requests | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="5" requestIdentifier="#5" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="WorkoutTrackerAnalyticsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -195,9 +211,9 @@
       <list>
         <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="HTTP Request.generated-requests | #3" />
-        <item itemvalue="HTTP Request.generated-requests | #5" />
+        <item itemvalue="HTTP Request.generated-requests | #2" />
         <item itemvalue="HTTP Request.generated-requests | #4" />
-        <item itemvalue="Gradle.AnalyticsControllerTest" />
+        <item itemvalue="Gradle.workout-tracker-analytics-service [clean assemble]" />
       </list>
     </recent_temporary>
   </component>
@@ -347,19 +363,15 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java</url>
-          <line>25</line>
-          <properties class="com.WorkoutTrackerAnalyticsService.repository.WorkoutRepositoryImpl" method="getAllWorkoutsForUser">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="9" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/WorkoutRepositoryImpl.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

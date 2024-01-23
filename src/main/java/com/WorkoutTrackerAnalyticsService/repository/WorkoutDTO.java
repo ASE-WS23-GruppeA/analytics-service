@@ -1,7 +1,10 @@
 package com.WorkoutTrackerAnalyticsService.repository;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.List;
-import java.util.Objects;
+
 
 public class WorkoutDTO {
     private long userID;
@@ -9,6 +12,7 @@ public class WorkoutDTO {
     private String workoutName;
     private String createdDate;
 
+    @JsonProperty("workout_sets")
     private List<WorkoutSetDTO> workoutSets;
 
     public long getUserID() {

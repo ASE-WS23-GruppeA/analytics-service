@@ -39,7 +39,7 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         return weightProgressMap;
     }
 
- lc
+
     public Map<String, Object> getUserTrainingInfo(Long userId, LocalDate startDate, LocalDate endDate) {
         List<WorkoutDTO> userWorkouts = workoutRepository.getAllWorkoutsForUser(userId);
 
