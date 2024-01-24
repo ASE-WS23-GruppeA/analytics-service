@@ -2,7 +2,12 @@ package com.WorkoutTrackerAnalyticsService.repository;
 
 import java.util.List;
 
+import com.WorkoutTrackerAnalyticsService.dto.ExerciseDTO;
+
 public interface ExerciseRepository {
-    public List<ExerciseDTO> getAllExercises();
-    public ExerciseDTO getExerciseById(Long exerciseId);
+
+  List<ExerciseDTO> getAllExercises();
+
+  ExerciseDTO getExerciseById(Long exerciseId);
+
 }

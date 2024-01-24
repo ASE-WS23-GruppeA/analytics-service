@@ -6,15 +6,15 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class WorkoutTrackerAnalyticsServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WorkoutTrackerAnalyticsServiceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(WorkoutTrackerAnalyticsServiceApplication.class, args);
+  }
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+  @Bean
+  public RestTemplate restTemplate() {
+    return new RestTemplate();
+  }
 }
