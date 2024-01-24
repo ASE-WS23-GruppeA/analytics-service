@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a58628fd-629e-429b-83b2-1f1fa95dade8" name="Changes" comment="edited README">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aa110be8-04ef-4339-a209-0acf3bc01616/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2b5e5af82c5e33673b554a6c2b6942f49cc8e5fc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/b/2b5e5af82c5e33673b554a6c2b6942f49cc8e5fc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/repository/ExerciseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,9 +184,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.generated-requests | #2" />
-        <item itemvalue="HTTP Request.generated-requests | #3" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
+        <item itemvalue="HTTP Request.generated-requests | #3" />
+        <item itemvalue="HTTP Request.generated-requests | #2" />
         <item itemvalue="HTTP Request.generated-requests | #4" />
         <item itemvalue="Gradle.workout-tracker-analytics-service [clean assemble]" />
       </list>
@@ -298,7 +289,7 @@
       <workItem from="1705956381852" duration="448000" />
       <workItem from="1705960334559" duration="1141000" />
       <workItem from="1706011014159" duration="199000" />
-      <workItem from="1706091732714" duration="4238000" />
+      <workItem from="1706091732714" duration="6383000" />
     </task>
     <task id="LOCAL-00001" summary="edited README">
       <option name="closed" value="true" />
