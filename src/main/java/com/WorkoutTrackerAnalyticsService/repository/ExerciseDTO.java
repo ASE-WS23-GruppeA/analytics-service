@@ -5,7 +5,7 @@ public class ExerciseDTO {
     private String exerciseName;
     private String muscleGroup;
 
-    public Long getExerciseByID() {
+    public Long getExerciseID() {
         return exerciseID;
     }
 

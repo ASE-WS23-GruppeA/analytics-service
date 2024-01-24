@@ -14,8 +14,6 @@ _src/test/java/com/WorkoutTrackerAnalyticsServiceTest/repository/UserProgressRep
 Tsrc/main/java/com/WorkoutTrackerAnalyticsService/controller/AnalyticsController.java,3\8\38ecf3dc774511ff9b14f1d9b1ced1aac6fb6174
 å
 \src/test/java/com/WorkoutTrackerAnalyticsServiceTest/controller/AnalyticsControllerTest.java,4\0\403a3b747b147312af861de0cd92526682229b27
-á
-Wsrc/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepository.java,2\b\2b5e5af82c5e33673b554a6c2b6942f49cc8e5fc
 ~
 Nsrc/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsService.java,7\5\75f54a9793213393ad8bb96555fb56025e27efb6
 è
@@ -30,8 +28,6 @@ Y
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 _
 /out/production/resources/application.properties,8\5\85d7098e916a4818c04e0961d0740d145b133fae
-ã
-[src/main/java/com/WorkoutTrackerAnalyticsService/repository/UserProgressRepositoryImpl.java,b\6\b6bca0a495e2dc057f4dd69c1c461badd54a1640
 Ç
 Rsrc/main/java/com/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImpl.java,8\2\82f1233bec7754d57898b1d65224f2d7dbc9ae38
 {

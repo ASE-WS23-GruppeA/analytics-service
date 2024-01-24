@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AnalyticsServiceImpl implements AnalyticsService {
-    private final WorkoutRepositoryImpl workoutRepository;
+    private final WorkoutRepository workoutRepository;
     private final ExerciseRepository exerciseRepository;
 
     public AnalyticsServiceImpl(WorkoutRepositoryImpl workoutRepository, ExerciseRepository exerciseRepository) {
@@ -20,6 +20,11 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
     public Map<String, Double> getWeightProgressForExercise(Long userId, String exerciseName, LocalDate startDate, LocalDate endDate) {
         List<WorkoutDTO> userWorkouts = workoutRepository.getAllWorkoutsForUser(userId);
+        List<ExerciseDTO> userExercises = exerciseRepository.getAllExercises();
+
+        // Step 1: Create a mapping of exercise names to IDs
+        Map<String, Long> exerciseIdMap = userExercises.stream()
+                .collect(Collectors.toMap(ExerciseDTO::getExerciseName, ExerciseDTO::getExerciseID));
 
         Map<String, Double> weightProgressMap = new LinkedHashMap<>();
 
@@ -27,12 +32,18 @@ public class AnalyticsServiceImpl implements AnalyticsService {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
             LocalDate workoutDate = LocalDate.parse(workout.getCreatedDate(), formatter);
 
-            if (exerciseName.equals(workout.getWorkoutName()) &&
-                    (workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
+            if ((workoutDate.isEqual(startDate) || workoutDate.isAfter(startDate)) &&
                     (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
+
                 for (WorkoutSetDTO set : workout.getWorkoutSets()) {
-                    double weight = set.getWeights();
-                    weightProgressMap.put(workoutDate.toString(), weight);
+                    // Step 2: Get the exercise ID based on the exercise name
+                    Long exerciseId = exerciseIdMap.get(exerciseName);
+
+                    // Check if the set's exercise ID matches the desired exercise ID
+                    if (exerciseId != null && Objects.equals(set.getExerciseID(), exerciseId)) {
+                        double weight = set.getWeights();
+                        weightProgressMap.put(workoutDate.toString(), weight);
+                    }
                 }
             }
         }
