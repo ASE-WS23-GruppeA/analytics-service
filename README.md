@@ -4,7 +4,7 @@ This documentation provides information about the "Analytics Service" microservi
 
 
 link http://localhost:8081/analytics-service/
-<<<<<<< HEAD
+
 ## Table of Contents
 - [API Endpoints](#api-endpoints)
 - [Usage](#usage)
