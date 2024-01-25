@@ -23,3 +23,9 @@ Wsrc/main/java/com/WorkoutTrackerAnalyticsService/service/impl/AnalyticsServiceI
 [src/main/java/com/WorkoutTrackerAnalyticsService/repository/impl/WorkoutRepositoryImpl.java,3\0\303f646b1c73683a092c087981c4b89dd6779d31
 u
 Esrc/main/java/com/WorkoutTrackerAnalyticsService/dto/ExerciseDTO.java,a\4\a434c07475e4bd0a562480922d0f708701442be1
+7
+gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
+~
+Nsrc/test/java/WorkoutTrackerAnalyticsService/service/AnalyticsServiceTest.java,7\e\7ef41978589c2226853f6a9f61ef4c48a0fc2cbb
+‚
+Rsrc/test/java/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImplTest.java,1\0\10fa5365a8a9eed44a4b6b04825952d57e17f81e

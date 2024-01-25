@@ -81,19 +81,20 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
 
       if (userId.equals(workout.getUserID()) && (workoutDate.isEqual(startDate) || workoutDate.isAfter(
-          startDate)) && (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
+              startDate)) && (workoutDate.isEqual(endDate) || workoutDate.isBefore(endDate))) {
 
-        for (WorkoutSetDTO set : workout.getWorkoutSets()) {
-          Map<String, Object> exerciseInfo = new HashMap<>();
-          exerciseInfo.put("exercise", exerciseRepository.getExerciseById(set.getExerciseID()).getExerciseName());
-          exerciseInfo.put("sets", set.getWorkoutSetsID());
-          exerciseInfo.put("reps", set.getReps());
+        if (workout.getWorkoutSets() != null) {
+          for (WorkoutSetDTO set : workout.getWorkoutSets()) {
+            Map<String, Object> exerciseInfo = new HashMap<>();
+            exerciseInfo.put("exercise", exerciseRepository.getExerciseById(set.getExerciseID()).getExerciseName());
+            exerciseInfo.put("sets", set.getWorkoutSetsID());
+            exerciseInfo.put("reps", set.getReps());
 
-          trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(exerciseInfo);
+            trainingInfoMap.computeIfAbsent(workoutDate, k -> new ArrayList<>()).add(exerciseInfo);
+          }
         }
       }
     }
-
     // Sort the map by dates
     trainingInfoMap = trainingInfoMap.entrySet().stream().sorted(Map.Entry.comparingByKey())
         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
