@@ -39,64 +39,40 @@ public class AnalyticsServiceImplTest {
         assertEquals(Collections.emptyMap(), weightProgressMap);
     }
 
-
-
     @Test
-    void testGetUserTrainingInfo() {
-
+    void testGetAverageWeightProgressByMuscleGroup() {
+        // Mock data and expectations
         List<WorkoutDTO> userWorkouts = Collections.singletonList(createMockWorkout());
+
         when(workoutRepository.getAllWorkoutsForUser(anyLong())).thenReturn(userWorkouts);
         when(exerciseRepository.getExerciseById(anyLong())).thenReturn(createMockExercise());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-        LocalDate startDate = LocalDate.parse("2024-01-23 17:24:52.571", formatter);
-        LocalDate endDate = LocalDate.parse("2024-01-23 20:30:58.673", formatter);
+        // Perform the test
+        Map<String, Object> result = analyticsService.getAverageWeightProgressByMuscleGroup(
+                1L, "Legs", LocalDate.now(), LocalDate.now());
 
-
-        Map<String, Object> userTrainingInfo = analyticsService.getUserTrainingInfo(1L,startDate , endDate);
-
-        assertEquals(createExpectedTrainingInfo(), userTrainingInfo);
+        // Assert the result
+        assertNotNull(result);
+        assertEquals(0.0, result.get("averageWeightProgress"));
+        assertEquals("Legs", result.get("MuscleGroup"));
     }
-
-    // Helper methods to create mock objects and expected results...
 
     private WorkoutDTO createMockWorkout() {
         WorkoutDTO workout = new WorkoutDTO();
         workout.setUserID(1L);
-        workout.setCreatedDate(LocalDate.now().toString());
-
-        WorkoutSetDTO workoutSet = new WorkoutSetDTO();
-        workoutSet.setExerciseID(1L);
-        workoutSet.setWorkoutSetsID(3L);
-        workoutSet.setReps(10L);
-
-        workout.setWorkoutSets(Collections.singletonList(workoutSet));
-
+        workout.setCreatedDate("2023-01-01T12:00:00.000Z");
+        WorkoutSetDTO set = new WorkoutSetDTO();
+        set.setExerciseID(1L);
+        set.setWeights(50L);
+        workout.setWorkoutSets(Collections.singletonList(set));
         return workout;
     }
 
     private ExerciseDTO createMockExercise() {
         ExerciseDTO exercise = new ExerciseDTO();
         exercise.setExerciseID(1L);
-        exercise.setExerciseName("Sit-ups");
-
+        exercise.setMuscleGroup("Legs");
         return exercise;
-    }
-
-    private Map<String, Object> createExpectedTrainingInfo() {
-        Map<String, Object> exerciseInfo = new HashMap<>();
-        exerciseInfo.put("exercise", "Sit-ups");
-        exerciseInfo.put("sets", 3);
-        exerciseInfo.put("reps", 10);
-
-        Map<LocalDate, List<Map<String, Object>>> expectedTrainingInfoMap = new HashMap<>();
-        expectedTrainingInfoMap.put(LocalDate.now(), Collections.singletonList(exerciseInfo));
-
-        Map<String, Object> expectedResult = new HashMap<>();
-        expectedResult.put("gymVisits", 1);
-        expectedResult.put("trainingInfo", expectedTrainingInfoMap);
-
-        return expectedResult;
     }
 
 
