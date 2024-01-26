@@ -17,3 +17,7 @@ Esrc/main/java/com/WorkoutTrackerAnalyticsService/dto/ExerciseDTO.java,a\4\a434
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 ‚
 Rsrc/test/java/WorkoutTrackerAnalyticsService/service/AnalyticsServiceImplTest.java,1\0\10fa5365a8a9eed44a4b6b04825952d57e17f81e
+w
+Gsrc/main/java/com/WorkoutTrackerAnalyticsService/dto/WorkoutSetDTO.java,9\f\9f9db5cf63e4675fad5c957d0f6478966cf1254f
+t
+Dsrc/main/java/com/WorkoutTrackerAnalyticsService/dto/WorkoutDTO.java,2\0\206a6b2c17d64990e9f181f44ccbfe5c840b7445
