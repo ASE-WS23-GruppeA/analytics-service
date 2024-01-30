@@ -21,3 +21,13 @@ w
 Gsrc/main/java/com/WorkoutTrackerAnalyticsService/dto/WorkoutSetDTO.java,9\f\9f9db5cf63e4675fad5c957d0f6478966cf1254f
 t
 Dsrc/main/java/com/WorkoutTrackerAnalyticsService/dto/WorkoutDTO.java,2\0\206a6b2c17d64990e9f181f44ccbfe5c840b7445
+c
+3src/test/java/service/AnalyticsServiceImplTest.java,c\5\c54d4f1fdf36f987d3cf4a364a46ec28010417cb
+f
+6src/test/java/controller/AnalyticsControllerTeest.java,3\0\30101a03b820f609cd282a2b91fa0602efdf9976
+e
+5src/test/java/controller/AnalyticsControllerTest.java,9\1\91b166ba4713914dae7d1f3e848d0b9cbae8dcff
+Œ
+\src/main/java/com/WorkoutTrackerAnalyticsService/repository/impl/ExerciseRepositoryImpl.java,f\0\f0cf5815d3f07c362d7e62a9db06db16dff19f10
+h
+8src/test/java/repository/ExerciseRepositoryImplTest.java,4\1\414b2c926a9db246fdf2924aacfc23af24bd048b
